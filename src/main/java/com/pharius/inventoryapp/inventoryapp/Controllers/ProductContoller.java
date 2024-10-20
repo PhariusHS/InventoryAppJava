@@ -33,7 +33,7 @@ public class ProductContoller {
     public Product getProductById(@PathVariable Long id){
         //Get the product by id
         return productRepository.findById(id)
-        .orElseThrow( () -> new RuntimeException("The product with the id " + id + "doesn't't exist")); //Error handling not getting id
+        .orElseThrow( () -> new RuntimeException("The product with the id " + id + " doesn't exist")); //Error handling not getting id
     }
 
     //Post a new product
@@ -51,7 +51,7 @@ public class ProductContoller {
         
         //Get the product by id
         Product product = productRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("The product with the id " + id + "doesn't't exist")); //Error handling not getting id
+        .orElseThrow(() -> new RuntimeException("The product with the id " + id + " doesn't exist")); //Error handling not getting id
 
         //Update the product
         product.setName(productDetails.getName());
