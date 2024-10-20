@@ -3,6 +3,7 @@ package com.pharius.inventoryapp.inventoryapp.Controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,11 +22,13 @@ public class ProductContoller {
     @Autowired
     private ProductRepository productRepository;
 
+    //Get all prdocuts
     @GetMapping
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
+    //Get one product
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id){
         //Get the product by id
@@ -33,6 +36,7 @@ public class ProductContoller {
         .orElseThrow( () -> new RuntimeException("The product with the id " + id + "doesn't't exist")); //Error handling not getting id
     }
 
+    //Post a new product
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
 
@@ -40,6 +44,7 @@ public class ProductContoller {
 
     }
 
+    //Update a product by id
     @PutMapping
     public Product updateProduct(@PathVariable Long id, @RequestBody Product productDetails){
         
@@ -56,5 +61,16 @@ public class ProductContoller {
         return productRepository.save(product);
     }
 
+    //Delete product
+    @DeleteMapping("/id")
+    public void deleteProduct(@PathVariable Long id){
 
+        //Get the product to delete by id
+        Product product = productRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("The product with the id " + id + "doesn't't exist")); //Error handling not getting id
+
+        //delete the product
+        productRepository.delete(product);
+
+    }
 }
