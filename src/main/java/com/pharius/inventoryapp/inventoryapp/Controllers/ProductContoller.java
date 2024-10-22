@@ -60,7 +60,7 @@ public class ProductContoller {
     }
 
     //Delete product
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id){
 
         //Get the product to delete by id
