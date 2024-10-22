@@ -15,8 +15,6 @@ public class Product {
     private int stock;
 
 
-
-
     //Getters and Setters
     public Long getId() {
         return id;

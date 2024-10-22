@@ -1,7 +1,6 @@
 package com.pharius.inventoryapp.inventoryapp.Controllers;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
 import com.pharius.inventoryapp.inventoryapp.Entities.Product;
 
@@ -45,7 +43,7 @@ public class ProductContoller {
     }
 
     //Update a product by id
-    @PutMapping
+    @PutMapping("/{id}")
     public Product updateProduct(@PathVariable Long id, @RequestBody Product productDetails){
         
         
@@ -67,7 +65,7 @@ public class ProductContoller {
 
         //Get the product to delete by id
         Product product = productRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("The product with the id " + id + "doesn't't exist")); //Error handling not getting id
+        .orElseThrow(() -> new RuntimeException("The product with the id " + id + "doesn't exist")); //Error handling not getting id
 
         //delete the product
         productRepository.delete(product);
