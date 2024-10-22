@@ -10,4 +10,4 @@ The project is built with Spring Boot and follows REST principles to handle prod
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/youruser/inventoryapp.git
+git clone https://github.com/PhariusHS/inventoryapp.git
