@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.pharius.inventoryapp.inventoryapp.Entities.User.Role;
 import com.pharius.inventoryapp.inventoryapp.Entities.User.User;
 import com.pharius.inventoryapp.inventoryapp.Repositories.UserRepository;
+import com.pharius.inventoryapp.inventoryapp.jwt.JwtService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,6 +15,8 @@ public class AuthService {
 
 
     private final UserRepository userRepository;
+    private final JwtService jwtService;
+
 
     public AuthResponse login(LoginRequest request) {
         // TODO Auto-generated method stub
@@ -34,7 +37,7 @@ public class AuthService {
         userRepository.save(user);
 
         return AuthResponse.builder()
-        .token(null)
+        .token(jwtService.getToken(user))
         .build();
     }
 
