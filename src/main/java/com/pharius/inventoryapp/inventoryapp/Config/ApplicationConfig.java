@@ -33,16 +33,16 @@ public class ApplicationConfig {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailService());
         authenticationProvider.setPasswordEncoder(passwordEncoder());
-        return authenticationProvider();
+        return authenticationProvider;
     }
 
     @Bean
-    private PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    private UserDetailsService userDetailService() {
+    public UserDetailsService userDetailService() {
         return username -> userRepository.findByUsername(username)
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
