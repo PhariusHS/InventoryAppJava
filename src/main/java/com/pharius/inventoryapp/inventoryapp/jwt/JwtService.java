@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -18,9 +19,11 @@ import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JwtService {
+   
+    private final static Dotenv dotenv = Dotenv.load();
     
-    private static final String SECRET_KEY="SECRET_KEY";
-
+    
+    private static final String SECRET_KEY = (dotenv.get("SECRET_KEY"));
     public String getToken(UserDetails user) {
         return getToken(new HashMap<>(), user);
     }

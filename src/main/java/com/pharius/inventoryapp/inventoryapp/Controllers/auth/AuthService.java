@@ -35,8 +35,6 @@ public class AuthService {
         .role(Role.USER)
         .build();
 
-        String encodedPassword = passwordEncoder.encode(request.getPassword());
-        System.out.println("Encoded Password: " + encodedPassword);
 
         userRepository.save(user);
 
