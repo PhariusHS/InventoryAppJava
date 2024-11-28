@@ -33,36 +33,36 @@ public class JwtService {
         return getToken(new HashMap<>(), user);
     }
 
-    @SuppressWarnings("deprecation")
-    private String getToken(Map<String,Object> extraClaims, UserDetails user) {
+    @SuppressWarnings("deprecation")//hehe
+    private String getToken(Map<String,Object> extraClaims, UserDetails user) {//Get token with claims
         return Jwts
             .builder()
             .claims(extraClaims)
             .subject(user.getUsername())
             .issuedAt(new Date(System.currentTimeMillis()))
-            .expiration(new Date(System.currentTimeMillis() + 1000*60*24))
+            .expiration(new Date(System.currentTimeMillis() + 1000*60*24)) //24minutes  
             .signWith(getKey(), SignatureAlgorithm.HS256 )
-            .compact();
+            .compact();//Create the jwt string -> token
     }
 
-    private Key getKey() {
+    private Key getKey() { //Decoding secret key in bytes
        byte[] keyBytes=Decoders.BASE64.decode(SECRET_KEY);
        return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    private final SecretKey SECRET_KEY2 = (SecretKey) getKey();
+    private final SecretKey SECRET_KEY2 = (SecretKey) getKey(); //The object SecretKey returns a Byte, we can use our secret_key decoded on bytes for this
 
 
-    public String getUsernameFromToken(String token) {
+    public String getUsernameFromToken(String token) { //Getting username using Claims method
        return getClaim(token, Claims::getSubject);
     }
 
-    public boolean isTokenValid(String token, UserDetails userDetails) {
+    public boolean isTokenValid(String token, UserDetails userDetails) { // If the username is the same as the one in the token and it's not expired returns true else false
       final String username = getUsernameFromToken(token);
       return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    private Claims getAllClaims(String token)
+    private Claims getAllClaims(String token)//Get all the token object info
     {
         return Jwts
         .parser()
@@ -72,18 +72,18 @@ public class JwtService {
         .getPayload();
     }
 
-    public <T> T getClaim(String token, Function<Claims, T> claimsResolver) 
+    public <T> T getClaim(String token, Function<Claims, T> claimsResolver) //Generic method to get some util specific info of the token
     {
         final Claims claims = getAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
 
-    private Date getExpiration(String token){
+    private Date getExpiration(String token){ //Getting the expiration of the token
         return getClaim(token, Claims::getExpiration);
     }
 
-    private Boolean isTokenExpired(String token){
+    private Boolean isTokenExpired(String token){ //Verifying if the token is expired
         return getExpiration(token).before(new Date());
     }
 }

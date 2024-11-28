@@ -1,4 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Controllers;
+package com.pharius.inventoryapp.inventoryapp.Controllers.Product;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
+
 import com.pharius.inventoryapp.inventoryapp.Entities.Product;
 
 @RestController
@@ -18,27 +18,26 @@ import com.pharius.inventoryapp.inventoryapp.Entities.Product;
 public class ProductContoller {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductService productService;
 
     //Get all prdocuts
     @GetMapping
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productService.getAllProducts();
     }
 
     //Get one product
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id){
         //Get the product by id
-        return productRepository.findById(id)
-        .orElseThrow( () -> new RuntimeException("The product with the id " + id + " doesn't exist")); //Error handling not getting id
+        return productService.getProductById(id);
     }
 
     //Post a new product
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
 
-        return productRepository.save(product);
+        return productService.createProduct(product);
 
     }
 
@@ -46,29 +45,15 @@ public class ProductContoller {
     @PutMapping("/{id}")
     public Product updateProduct(@PathVariable Long id, @RequestBody Product productDetails){
         
-        
-        //Get the product by id
-        Product product = productRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("The product with the id " + id + " doesn't exist")); //Error handling not getting id
+        return productService.updateProduct(id, productDetails);
 
-        //Update the product
-        product.setName(productDetails.getName());
-        product.setStock(productDetails.getStock());
-
-        //Saves and returns the new product
-        return productRepository.save(product);
     }
 
     //Delete product
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id){
 
-        //Get the product to delete by id
-        Product product = productRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("The product with the id " + id + "doesn't exist")); //Error handling not getting id
-
-        //delete the product
-        productRepository.delete(product);
-
+        productService.deleteProduct(id);
+      
     }
 }
