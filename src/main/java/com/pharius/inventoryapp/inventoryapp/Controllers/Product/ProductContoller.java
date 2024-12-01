@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pharius.inventoryapp.inventoryapp.Entities.Product;
+import com.pharius.inventoryapp.inventoryapp.Entities.Product.Product;
 
 @RestController
 @RequestMapping("/products")
@@ -28,9 +28,9 @@ public class ProductContoller {
 
     //Get one product
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id){
-        //Get the product by id
-        return productService.getProductById(id);
+    public Product getProductById(@PathVariable Long productId){
+        //Get the product by productId
+        return productService.getProductById(productId);
     }
 
     //Post a new product
@@ -41,19 +41,19 @@ public class ProductContoller {
 
     }
 
-    //Update a product by id
+    //Update a product by productId
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product productDetails){
+    public Product updateProduct(@PathVariable Long productId, @RequestBody Product productDetails){
         
-        return productService.updateProduct(id, productDetails);
+        return productService.updateProduct(productId, productDetails);
 
     }
 
     //Delete product
     @DeleteMapping("/{id}")
-    public void deleteProduct(@PathVariable Long id){
+    public void deleteProduct(@PathVariable Long productId){
 
-        productService.deleteProduct(id);
+        productService.deleteProduct(productId);
       
     }
 }
