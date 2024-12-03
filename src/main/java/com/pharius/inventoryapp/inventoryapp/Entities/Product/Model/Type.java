@@ -1,4 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Entities.Product;
+package com.pharius.inventoryapp.inventoryapp.Entities.Product.Model;
 
 public enum Type {
     BIRRA,
