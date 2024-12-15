@@ -6,12 +6,14 @@ import lombok.Data;
 public class ProductDTO {
     private Long id;
     private String name;
+    private TypeOfProduct type;
 
 
     
     public ProductDTO(Product product) {
         this.id = id;
         this.name = name;
+        this.type = type;
     }
 }
 
