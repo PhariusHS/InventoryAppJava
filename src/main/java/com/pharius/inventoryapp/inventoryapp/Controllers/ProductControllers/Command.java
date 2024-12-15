@@ -1,4 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Controllers;
+package com.pharius.inventoryapp.inventoryapp.Controllers.ProductControllers;
 
 import org.springframework.http.ResponseEntity;
 

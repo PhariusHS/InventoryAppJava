@@ -1,4 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Controllers.auth;
+package com.pharius.inventoryapp.inventoryapp.Controllers.AuthControllers;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
