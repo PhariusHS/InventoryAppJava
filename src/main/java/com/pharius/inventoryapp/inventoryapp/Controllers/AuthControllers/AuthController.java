@@ -1,7 +1,9 @@
-package com.pharius.inventoryapp.inventoryapp.Controllers.auth;
+package com.pharius.inventoryapp.inventoryapp.Controllers.AuthControllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.pharius.inventoryapp.inventoryapp.Services.AuthServices.AuthService;
 
 import lombok.RequiredArgsConstructor;
 

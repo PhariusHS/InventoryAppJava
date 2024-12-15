@@ -1,12 +1,12 @@
-package com.pharius.inventoryapp.inventoryapp.Entities.Product.Services;
+package com.pharius.inventoryapp.inventoryapp.Services.ProductServices;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Model.Product;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Model.ProductDTO;
+import com.pharius.inventoryapp.inventoryapp.Controllers.ProductControllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
+import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.ProductDTO;
 import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
 
 

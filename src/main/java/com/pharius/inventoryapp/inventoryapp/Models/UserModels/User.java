@@ -1,4 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Entities.User;
+package com.pharius.inventoryapp.inventoryapp.Models.UserModels;
 
 import java.util.Collection;
 import java.util.List;

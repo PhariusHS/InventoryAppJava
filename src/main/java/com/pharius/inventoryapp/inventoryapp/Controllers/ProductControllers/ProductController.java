@@ -1,4 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Controllers;
+package com.pharius.inventoryapp.inventoryapp.Controllers.ProductControllers;
 
 import java.util.List;
 
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Model.Product;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Model.ProductDTO;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Services.CreateProductService;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Services.DeleteProductService;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Services.GetAllProductsService;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Services.GetProductByIdService;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Services.UpdateProductCommand;
-import com.pharius.inventoryapp.inventoryapp.Entities.Product.Services.UpdateProductService;
+import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
+import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.ProductDTO;
+import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.CreateProductService;
+import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.DeleteProductService;
+import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.GetAllProductsService;
+import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.GetProductByIdService;
+import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.UpdateProductCommand;
+import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.UpdateProductService;
 
 @RestController
 @RequestMapping("/products")
