@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
@@ -29,9 +30,15 @@ public class Product { //Product entity
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne // One product can have one type - One type can have many products
-    @JoinColumn(name = "type_of_product_id", nullable = false)
-    private TypeOfProduct type;  //Type of product
+    @ManyToOne // One product can belong to one inventory - Every inventory has many products
+    @JoinColumn(name = "inventory_id", nullable = false) // foreign key inventory_id
+    private Inventory inventory;
+
+    private int quantity; // quantity of products in stock per inventory
+
+    @ManyToOne // One product can have one type - One type can be assigned to many products
+    @JoinColumn(name = "type_of_product_id", nullable = false) // foreign key type_of_product_id
+    private TypeOfProduct typeOfProduct;  // Type of product
     
 
 }
