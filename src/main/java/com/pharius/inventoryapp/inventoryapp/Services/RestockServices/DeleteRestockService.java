@@ -1,7 +1,5 @@
 package com.pharius.inventoryapp.inventoryapp.Services.RestockServices;
 
-public class UpdateRestockService {
-
-    
+public class DeleteRestockService {
     
 }
