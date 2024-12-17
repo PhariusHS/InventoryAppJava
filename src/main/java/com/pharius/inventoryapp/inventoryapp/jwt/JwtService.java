@@ -50,7 +50,7 @@ public class JwtService {
        return Keys.hmacShaKeyFor(keyBytes);
     }
 
-    private final SecretKey SECRET_KEY2 = (SecretKey) getKey(); //The object SecretKey returns a Byte, we can use our secret_key decoded on bytes for this
+    private final SecretKey SECRET_KEY2 = (SecretKey) getKey(); //The object SecretKey returns a Byte, we can use our secret_key decoded on bytes for this 
 
 
     public String getUsernameFromToken(String token) { //Getting username using Claims method

@@ -2,9 +2,10 @@ package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 
 import java.util.List;
 
-import com.pharius.inventoryapp.inventoryapp.Models.Establishment;
+import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,6 +14,8 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 
+
+@Entity
 public class Restock {
 
 

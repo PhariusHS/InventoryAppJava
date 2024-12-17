@@ -1,5 +1,7 @@
 package com.pharius.inventoryapp.inventoryapp.Models.ProductModels;
 
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
