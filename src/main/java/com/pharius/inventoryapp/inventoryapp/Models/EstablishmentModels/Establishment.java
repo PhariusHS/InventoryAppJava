@@ -1,12 +1,11 @@
-package com.pharius.inventoryapp.inventoryapp.Models;
+package com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels;
 
-import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Inventory;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +24,4 @@ public class Establishment {
     private String name;
     private String location;
 
-    @OneToOne(mappedBy = "establishment") // Bidirectional relationship
-    private Inventory inventory; // Inventory of the establishment
 } 

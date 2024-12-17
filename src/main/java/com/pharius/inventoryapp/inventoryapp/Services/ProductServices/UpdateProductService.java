@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.pharius.inventoryapp.inventoryapp.Controllers.ProductControllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.ProductDTO;
 import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;

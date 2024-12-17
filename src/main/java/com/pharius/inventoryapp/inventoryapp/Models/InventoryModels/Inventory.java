@@ -1,6 +1,6 @@
-package com.pharius.inventoryapp.inventoryapp.Models.ProductModels;
+package com.pharius.inventoryapp.inventoryapp.Models.InventoryModels;
 
-import com.pharius.inventoryapp.inventoryapp.Models.Establishment;
+import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
