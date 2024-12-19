@@ -12,9 +12,11 @@ public class EstablishmentDTO {
 
 
     public EstablishmentDTO(Establishment establishment) {
+        
         this.establishmentId = establishmentId;
         this.name = name;
         this.location = location;
+
     }
 
 
