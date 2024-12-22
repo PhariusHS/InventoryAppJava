@@ -12,10 +12,10 @@ public class ProductDTO {
 
     
     public ProductDTO(Product product) {
-        this.id = id;
-        this.name = name;
-        this.typeOfProduct = typeOfProduct;
-        this.quantity = quantity;  
+        this.id = product.getProductId();
+        this.name = product.getName();
+        this.typeOfProduct = product.getTypeOfProduct();
+        this.quantity = product.getQuantity();  
     }
 }
 

@@ -13,9 +13,9 @@ public class EstablishmentDTO {
 
     public EstablishmentDTO(Establishment establishment) {
         
-        this.establishmentId = establishmentId;
-        this.name = name;
-        this.location = location;
+        this.establishmentId = establishment.getEstablishmentId();
+        this.name = establishment.getName();
+        this.location = establishment.getLocation();
 
     }
 

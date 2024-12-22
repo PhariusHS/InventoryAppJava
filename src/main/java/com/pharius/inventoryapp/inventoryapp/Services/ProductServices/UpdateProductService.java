@@ -32,9 +32,9 @@ public class UpdateProductService implements Command<UpdateProductCommand, Produ
         //Get the product by productId
         Optional<Product> productOptional = productRepository.findById(command.getId());
         if(productOptional.isPresent()){
-            Product product = command.getProduct();
-            product.setProductId(command.getId());
-            productRepository.save(product);
+            Product product = command.getProduct(); 
+            product.setProductId(command.getId()); 
+            productRepository.save(product); // Save the new product
 
             return ResponseEntity.ok(new ProductDTO(product));
         }
