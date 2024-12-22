@@ -1,6 +1,5 @@
 package com.pharius.inventoryapp.inventoryapp.Models.ProductModels;
 
-import java.lang.reflect.Type;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,8 +26,8 @@ public class TypeOfProduct {
 
 
     public TypeOfProduct(TypeOfProduct typeOfProduct) {
-        this.typeOfProductId = typeOfProductId;
-        this.name = name;
+        this.typeOfProductId = typeOfProduct.getTypeOfProductId();
+        this.name = typeOfProduct.getName();
     }
 
 

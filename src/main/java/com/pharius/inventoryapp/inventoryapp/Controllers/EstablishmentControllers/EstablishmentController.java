@@ -34,7 +34,7 @@ public class EstablishmentController {
 
     @PostMapping
     public ResponseEntity<EstablishmentDTO> crateEstablishment(@RequestBody Establishment establishment) {
-        return CreateEstablishmentService.execute(establishment);
+        return CreateEstablishmentService.execute(establishment); //TODO: Add validation, error handling and response entity its throwing null on postman (Error on DTO object);
     }
 
 }

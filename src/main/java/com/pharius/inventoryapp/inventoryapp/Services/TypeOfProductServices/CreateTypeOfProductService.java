@@ -1,15 +1,16 @@
 package com.pharius.inventoryapp.inventoryapp.Services.TypeOfProductServices;
 
-import org.aspectj.apache.bcel.generic.Type;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
-import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
-import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.ProductDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
 import com.pharius.inventoryapp.inventoryapp.Repositories.TypeOfProductRepository;
 
+
+
+@Service
 public class CreateTypeOfProductService implements Command<TypeOfProduct, TypeOfProduct> {
 
 
