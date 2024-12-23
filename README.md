@@ -1,8 +1,10 @@
 # Inventory App documentation
 
-This is a REST controller to manage products in an inventory application. It provides CRUD operations (Create, Read, Update, and Delete) for the products.
+In this application, we have several establishments that need to restock their centers.
+Every establishment has an inventory with a list of products and their available stock.
 
-The project is built with Spring Boot and follows REST principles to handle products in the database.
+When an establishment needs to restock itself, it generates a restock request based on its inventory.
+Once the restock is completed, the inventory quantities will decrease.
 
 
 ## Installation
@@ -15,9 +17,15 @@ https://github.com/PhariusHS/InventoryAppJava.git
 
 
 ## API ENDPOINTS
+- **URL**: `/products`
+- **URL**: `/establishments`
+- **URL**: `/restock`
+- **URL**: `/inventory`
+- **URL**: `/type` -(Type Of Product)-
 
-### Get all products
 
+## EXAMPLES OF USE
+### Get all 
 - **URL**: `/products`
 - **Method**: `GET`
 - **Description**: Returns a list of all products in the database.
@@ -38,9 +46,9 @@ https://github.com/PhariusHS/InventoryAppJava.git
 ]
 ```
 
-### Get product by ID
+### Get by ID
 
-- **URL**: `/products/{id}`
+- **URL**: `/establishments/{id}`
 - **Method**: `GET`
 - **Description**: Returns a product by its id.
 - **Parameter**:
