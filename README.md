@@ -18,11 +18,11 @@ https://github.com/PhariusHS/InventoryAppJava.git
 
 ## API ENDPOINTS
 - **URL**:
-`/products`
-`/establishments`
-`/restock`
-`/inventory`
-`/type` -(Type Of Product)-
+- `/products`
+- `/establishments`
+- `/restock`
+- `/inventory`
+- `/type` -(Type Of Product)-
 
 
 ## EXAMPLES OF USE
