@@ -8,11 +8,8 @@ import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
 import com.pharius.inventoryapp.inventoryapp.Repositories.TypeOfProductRepository;
 
-
-
 @Service
 public class CreateTypeOfProductService implements Command<TypeOfProduct, TypeOfProduct> {
-
 
     private final TypeOfProductRepository typeOfProductRepository;
 
@@ -22,7 +19,7 @@ public class CreateTypeOfProductService implements Command<TypeOfProduct, TypeOf
 
     @Override
     public ResponseEntity<TypeOfProduct> execute(TypeOfProduct typeOfProduct) {
-       
+
         TypeOfProduct savedType = typeOfProductRepository.save(typeOfProduct); // Save the new typeOfProduct
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new TypeOfProduct(savedType));

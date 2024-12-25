@@ -26,7 +26,6 @@ public class GetTypeOfProductByIdService implements Query<Long, TypeOfProduct> {
             return ResponseEntity.status(HttpStatus.OK).body(foundedType.get());
         }
 
-
         return null;
 
     }

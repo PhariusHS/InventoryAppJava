@@ -24,4 +24,10 @@ public class Establishment {
     private String name;
     private String location;
 
+    public Establishment(Establishment establishment) {
+        this.establishmentId = getEstablishmentId();
+        this.name = getName();
+        this.location = getLocation();
+    }
+
 } 

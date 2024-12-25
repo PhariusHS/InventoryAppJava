@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.pharius.inventoryapp.inventoryapp.Models.UserModels.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
-    Optional<User> findByUsername(String username);
+    Optional<User> findByUsername(String username); // Create a method to find a user by username
     
 }
