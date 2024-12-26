@@ -6,30 +6,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
+import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryRepository;
 
 @Service
-public class GetInventoryByIdService implements Query<Long, Inventory> {
+public class DeleteInventoryService implements Command<Long, Void>
 
+{
     private final InventoryRepository inventoryRepository;
 
-    public GetInventoryByIdService(InventoryRepository inventoryRepository) {
+    public DeleteInventoryService(InventoryRepository inventoryRepository) {
         this.inventoryRepository = inventoryRepository;
     }
 
     @Override
-    public ResponseEntity<Inventory> execute(Long id) {
+    public ResponseEntity<Void> execute(Long inventoryId) {
 
-        Optional<Inventory> foundedInventory = inventoryRepository.findById(id);
-
+        Optional<Inventory> foundedInventory = inventoryRepository.findById(inventoryId);
         if (foundedInventory.isPresent()) {
-            return ResponseEntity.status(HttpStatus.OK).body(foundedInventory.get());
+            inventoryRepository.deleteById(inventoryId);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
         return null;
-
     }
 
 }

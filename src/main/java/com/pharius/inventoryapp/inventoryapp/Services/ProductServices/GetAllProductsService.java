@@ -10,11 +10,9 @@ import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
 
-
 @Service
 public class GetAllProductsService implements Query<Void, List<Product>> {
 
-   
     private final ProductRepository productRepository;
 
     public GetAllProductsService(ProductRepository productRepository) {
@@ -22,12 +20,11 @@ public class GetAllProductsService implements Query<Void, List<Product>> {
     }
 
     @Override
-    public  ResponseEntity<List<Product>> execute(Void input) {
+    public ResponseEntity<List<Product>> execute(Void input) {
 
-        List<Product> products = productRepository.findAll(); 
+        List<Product> products = productRepository.findAll();
 
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
-
 
 }

@@ -4,11 +4,13 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
 import com.pharius.inventoryapp.inventoryapp.Repositories.TypeOfProductRepository;
 
+@Service
 public class GetTypeOfProductByIdService implements Query<Long, TypeOfProduct> {
 
     private final TypeOfProductRepository typeOfProductRepository;

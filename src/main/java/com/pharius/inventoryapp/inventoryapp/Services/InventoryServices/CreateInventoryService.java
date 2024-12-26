@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.RelationalCommand;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
@@ -12,6 +13,7 @@ import com.pharius.inventoryapp.inventoryapp.Repositories.EstablishmentRepositor
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryRepository;
 import com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices.GetEstablishmentByIdService;
 
+@Service
 public class CreateInventoryService implements RelationalCommand<Inventory, Inventory, Long> {
 
     private final InventoryRepository inventoryRepository;
