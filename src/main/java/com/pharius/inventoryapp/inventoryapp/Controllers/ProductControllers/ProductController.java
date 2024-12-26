@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
@@ -59,9 +60,10 @@ public class ProductController {
 
     // Post a new product
     @PostMapping
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody Product product) {
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody Product product, @RequestParam Long typeOfProductId,
+            @RequestParam Long inventoryId) {
 
-        return createProductService.execute(product);
+        return createProductService.execute(product, typeOfProductId, inventoryId);
 
     }
 

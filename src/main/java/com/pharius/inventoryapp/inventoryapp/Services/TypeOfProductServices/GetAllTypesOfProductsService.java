@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
 import com.pharius.inventoryapp.inventoryapp.Repositories.TypeOfProductRepository;
 
+@Service
 public class GetAllTypesOfProductsService implements Query<Void, List<TypeOfProduct>> {
 
     private final TypeOfProductRepository typeOfProductRepository;

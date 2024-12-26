@@ -10,12 +10,8 @@ import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
 
-
 @Service
 public class DeleteProductService implements Command<Long, Void> {
-
-   
-
 
     private final ProductRepository productRepository;
 
@@ -23,25 +19,23 @@ public class DeleteProductService implements Command<Long, Void> {
         this.productRepository = productRepository;
     }
 
-      
-    public ResponseEntity<Void> execute(Long productId){
+    public ResponseEntity<Void> execute(Long productId) {
 
-        //Get the product to delete by productId
-        
+        // Get the product to delete by productId
+
         Optional<Product> productOptional = productRepository.findById(productId);
 
-        if (productOptional.isPresent()){
+        if (productOptional.isPresent()) {
             productRepository.deleteById(productId);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-
         return null;
 
-       // .orElseThrow(() -> new RuntimeException("The product with the productId " + productId + "doesn't exist")); //Error handling not getting productId
+        // .orElseThrow(() -> new RuntimeException("The product with the productId " +
+        // productId + "doesn't exist")); //Error handling not getting productId
 
-        //delete the product
-      
+        // delete the product
 
     }
 
