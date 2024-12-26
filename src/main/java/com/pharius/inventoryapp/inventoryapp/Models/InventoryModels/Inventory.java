@@ -28,13 +28,9 @@ public class Inventory {
     @JoinColumn(name = "establishment_id", nullable = false, unique = true) // Foreign key establishment_id
     private Establishment establishment;
 
-
     public Inventory(Inventory inventory) {
         this.inventoryId = getInventoryId();
         this.establishment = getEstablishment();
     }
-
-
-
 
 }
