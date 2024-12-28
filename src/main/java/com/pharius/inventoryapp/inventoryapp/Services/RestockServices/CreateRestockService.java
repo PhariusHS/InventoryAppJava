@@ -1,7 +1,6 @@
 package com.pharius.inventoryapp.inventoryapp.Services.RestockServices;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -39,7 +38,6 @@ public class CreateRestockService implements RelationalCommand<Restock, Restock,
         Restock createdRestock = restockRepository.save(restock);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(new Restock(createdRestock));
-
     }
 
 }
