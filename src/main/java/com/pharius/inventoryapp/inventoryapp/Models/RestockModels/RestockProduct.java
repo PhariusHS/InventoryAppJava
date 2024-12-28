@@ -27,7 +27,7 @@ public class RestockProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne
+    @ManyToOne // One restock product can belong to one product - Every product has many restock products
     @JoinColumn(name ="product_id")
     private Product product;
 
