@@ -34,15 +34,16 @@ public class CreateRestockProductService
         Optional<Restock> foundedRestock = restockRepository.findById(restockId);
         Optional<Product> foundedProduct = productRepository.findById(productId);
 
-        if (!foundedProduct.isPresent() || !foundedRestock.isPresent()) {
-            return ResponseEntity.notFound().build();
+        if (foundedProduct.isPresent() && foundedRestock.isPresent()) {
+            restockProduct.setProduct(foundedProduct.get());
+            restockProduct.setRestock(foundedRestock.get());
+            restockProductRepository.save(restockProduct);
+
+            return ResponseEntity.status(HttpStatus.CREATED).body(new RestockProduct(restockProduct));
         }
+        //TODO: Service it's returning a thousand postman lines. It should return the restockProduct object;
 
-        restockProduct.setProduct(foundedProduct.get());
-        restockProduct.setRestock(foundedRestock.get());
-        restockProductRepository.save(restockProduct);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(new RestockProduct(restockProduct));
+        return ResponseEntity.notFound().build();
 
     }
 
