@@ -56,7 +56,7 @@ public class CreateProductServiceTest {
         productToCreate.setInventory(inventory);
         productToCreate.setTypeOfProduct(typeOfProduct);
 
-        Product productCreated = new Product(); // Create a product to simulate the response of the repository
+        Product productCreated = new Product(); // Expected response from the service
         productCreated.setProductId(1L);
         productCreated.setName("Product 1");
         productCreated.setInventory(inventory);

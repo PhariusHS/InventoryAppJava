@@ -42,6 +42,7 @@ public class Restock {
         this.restockId = restock.getRestockId();
         this.establishment = restock.getEstablishment();
         this.localDateTime = restock.getLocalDateTime();
+        this.restockProducts = restock.getRestockProducts();
     }
 
 }
