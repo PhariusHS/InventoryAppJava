@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 
@@ -36,6 +37,7 @@ public class Restock {
     private LocalDateTime localDateTime; // Date and time of restock
 
     @OneToMany(mappedBy="restock", cascade= CascadeType.ALL, orphanRemoval = true)
+    @Nullable
     private Set<RestockProduct> restockProducts;
 
     public Restock(Restock restock) {

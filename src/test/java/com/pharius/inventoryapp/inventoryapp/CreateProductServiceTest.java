@@ -33,7 +33,6 @@ public class CreateProductServiceTest {
     private TypeOfProductRepository typeOfProductRepository;
 
     @Mock
-    private InventoryRepository inventoryRepository;
 
     @InjectMocks
     private CreateProductService createProductService;
@@ -48,25 +47,21 @@ public class CreateProductServiceTest {
 
         // Given
         Establishment establishment = new Establishment(1L, "Establishment 1", "Address 1");
-        Inventory inventory = new Inventory(1L, establishment);
         TypeOfProduct typeOfProduct = new TypeOfProduct(1L, "Type 1");
 
         Product productToCreate = new Product(); // Create a product to simulate the request
         productToCreate.setName("Product 1");
-        productToCreate.setInventory(inventory);
         productToCreate.setTypeOfProduct(typeOfProduct);
 
         Product productCreated = new Product(); // Expected response from the service
         productCreated.setProductId(1L);
         productCreated.setName("Product 1");
-        productCreated.setInventory(inventory);
         productCreated.setTypeOfProduct(typeOfProduct);
 
-        when(inventoryRepository.findById(1L)).thenReturn(Optional.of(inventory)); // Simulate the response of the repository
         when(typeOfProductRepository.findById(1L)).thenReturn(Optional.of(typeOfProduct)); // Simulate the response of the repository
         when(productRepository.save(productToCreate)).thenReturn(productCreated);
         // When
-        ResponseEntity<ProductDTO> response = createProductService.execute(productToCreate, 1l, 1l);
+        ResponseEntity<ProductDTO> response = createProductService.execute(productToCreate, 1l);
 
         // Then
         assertEquals(ResponseEntity.status(HttpStatus.CREATED).body(new ProductDTO(productCreated)), response);

@@ -19,8 +19,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RestockProduct {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,8 +39,4 @@ public class RestockProduct {
         this.restock = restockProduct.getRestock();
         this.quantity = restockProduct.getQuantity();
     }
-
-
-
-
 }
