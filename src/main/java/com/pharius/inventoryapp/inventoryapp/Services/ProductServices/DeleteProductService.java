@@ -30,12 +30,7 @@ public class DeleteProductService implements Command<Long, Void> {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        return null;
-
-        // .orElseThrow(() -> new RuntimeException("The product with the productId " +
-        // productId + "doesn't exist")); //Error handling not getting productId
-
-        // delete the product
+        return null; // TODO error handling
 
     }
 
