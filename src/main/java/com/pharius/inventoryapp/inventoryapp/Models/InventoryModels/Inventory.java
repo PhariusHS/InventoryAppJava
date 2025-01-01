@@ -1,12 +1,16 @@
 package com.pharius.inventoryapp.inventoryapp.Models.InventoryModels;
 
+import java.util.Set;
+
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -27,6 +31,10 @@ public class Inventory {
     @OneToOne // One inventory can have one establishment - Every establishment has one inventory
     @JoinColumn(name = "establishment_id", nullable = false, unique = true) // Foreign key establishment_id
     private Establishment establishment;
+
+    // One inventory can have many inventory products - Every inventory product belongs to one inventory
+    @OneToMany (mappedBy="inventory", cascade= CascadeType.ALL, orphanRemoval = true)
+    private Set<InventoryProducts> inventoryProducts;
 
     public Inventory(Inventory inventory) {
         this.inventoryId = getInventoryId();

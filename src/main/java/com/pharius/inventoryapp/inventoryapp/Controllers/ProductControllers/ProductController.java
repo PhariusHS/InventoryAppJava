@@ -60,10 +60,9 @@ public class ProductController {
 
     // Post a new product
     @PostMapping
-    public ResponseEntity<ProductDTO> createProduct(@RequestBody Product product, @RequestParam Long typeOfProductId,
-            @RequestParam Long inventoryId) {
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody Product product, @RequestParam Long typeOfProductId) {
 
-        return createProductService.execute(product, typeOfProductId, inventoryId);
+        return createProductService.execute(product, typeOfProductId);
 
     }
 

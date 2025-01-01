@@ -7,15 +7,11 @@ public class ProductDTO {
     private Long id;
     private String name;
     private TypeOfProduct typeOfProduct;
-    private int quantity;
 
-
-    
     public ProductDTO(Product product) {
         this.id = product.getProductId();
         this.name = product.getName();
-        this.typeOfProduct = product.getTypeOfProduct();
-        this.quantity = product.getQuantity();  
+        this.typeOfProduct = product.getTypeOfProduct(); 
     }
 }
 

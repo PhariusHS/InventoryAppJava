@@ -40,14 +40,11 @@ public class GetProductServiceTest {
     @Test
     public void given_product_exists_when_get_product_service_return_product_dto(){
         // Given
-        Establishment establishment = new Establishment(1L, "Establishment 1", "Address 1");
-        Inventory inventory = new Inventory(1L, establishment);
         TypeOfProduct typeOfProduct = new TypeOfProduct(1L, "Type 1");
 
         Product product = new Product();
         product.setProductId(1L);
         product.setName("Product 1");
-        product.setInventory(inventory);
         product.setTypeOfProduct(typeOfProduct);
 
         when(productRepository.findById(1L)).thenReturn(Optional.of(product)); // When the method findById is called with 1L as parameter, return the product 
