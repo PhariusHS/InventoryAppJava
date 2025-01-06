@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
+import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.CreateInventoryProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.CreateInventoryService;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.GetAllInventoriesService;
+import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.GetAllInventoryProductsService;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.GetInventoryByIdService;
 
 
@@ -27,11 +30,16 @@ public class InventoryController {
     private final GetInventoryByIdService getInventoryByIdService;
     private final CreateInventoryService createInventoryService;
 
+    private final GetAllInventoryProductsService getAllInventoryProductsService;
+    private final CreateInventoryProductService createInventoryProductService;
+
     public InventoryController(GetAllInventoriesService getAllInventoriesService,
-            GetInventoryByIdService getInventoryByIdService, CreateInventoryService createInventoryService) {
+            GetInventoryByIdService getInventoryByIdService, CreateInventoryService createInventoryService, CreateInventoryProductService createInventoryProductService, GetAllInventoryProductsService getAllInventoryProductsService) {
         this.getAllInventoriesService = getAllInventoriesService;
         this.getInventoryByIdService = getInventoryByIdService;
         this.createInventoryService = createInventoryService;
+        this.createInventoryProductService = createInventoryProductService;
+        this.getAllInventoryProductsService = getAllInventoryProductsService;
     }
 
     @GetMapping
@@ -49,6 +57,19 @@ public class InventoryController {
         return createInventoryService.execute(inventory, establishmentId);
     }
     
+
+
+    @GetMapping("/product")
+    public ResponseEntity<List<InventoryProducts>> getAllInventoryProducts() {
+        return getAllInventoryProductsService.execute(null);
+    }
+    
+
+    @PostMapping("/product")
+    public ResponseEntity<InventoryProducts> createInventoryProduct (@RequestBody InventoryProducts inventoryProducts, @RequestParam Long inventoryId, @RequestParam Long productId) {
+        return createInventoryProductService.execute(inventoryProducts, inventoryId, productId);
+    }
+
     
 
 }

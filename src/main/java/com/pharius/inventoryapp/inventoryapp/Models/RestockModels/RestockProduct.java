@@ -1,5 +1,6 @@
 package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 
 import jakarta.persistence.Entity;
@@ -23,10 +24,12 @@ public class RestockProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @JsonBackReference(value = "RestockProduct_Many_To_One_Reference_To_Product") // Prevents infinite loop
     @ManyToOne // One restock product can belong to one product - Every product has many restock products
     @JoinColumn(name ="product_id")
     private Product product;
 
+    @JsonBackReference(value = "RestockProduct_Many_To_One_Reference_To_Restock") // Prevents infinite loop
     @ManyToOne // One restock product can belong to one restock - Every restock has many restock products
     @JoinColumn(name="restock_id")
     private Restock restock;

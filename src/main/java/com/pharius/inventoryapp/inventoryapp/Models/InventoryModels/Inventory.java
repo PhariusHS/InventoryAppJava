@@ -2,6 +2,9 @@ package com.pharius.inventoryapp.inventoryapp.Models.InventoryModels;
 
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 
 import jakarta.persistence.CascadeType;
@@ -22,6 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "inventoryId")
 public class Inventory {
 
     @Id

@@ -1,5 +1,8 @@
 package com.pharius.inventoryapp.inventoryapp.Models.InventoryModels;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 
 import jakarta.persistence.Entity;
@@ -18,6 +21,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class InventoryProducts {
 
     @Id
@@ -34,5 +38,5 @@ public class InventoryProducts {
 
     private int quantity;
 
-    
+
 }

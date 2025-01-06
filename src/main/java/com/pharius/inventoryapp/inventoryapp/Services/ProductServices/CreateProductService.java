@@ -27,7 +27,7 @@ public class CreateProductService implements RelationalCommand<Product, ProductD
     @Override
     public ResponseEntity<ProductDTO> execute(Product product, Long typeOfProductId) {
         Optional<TypeOfProduct> foundedTypeOfProduct  = typeOfProductRepository.findById(typeOfProductId); // check if type of product exists
-        if (!foundedTypeOfProduct.isPresent()) {
+        if (foundedTypeOfProduct.isPresent()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
         product.setTypeOfProduct(foundedTypeOfProduct.get());
