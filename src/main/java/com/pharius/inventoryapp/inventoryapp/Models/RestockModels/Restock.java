@@ -3,6 +3,8 @@ package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 
 import jakarta.annotation.Nullable;
