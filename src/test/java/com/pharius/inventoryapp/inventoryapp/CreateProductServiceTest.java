@@ -15,12 +15,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
-import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.ProductDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
-import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryRepository;
 import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
 import com.pharius.inventoryapp.inventoryapp.Repositories.TypeOfProductRepository;
 import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.CreateProductService;
@@ -46,7 +43,6 @@ public class CreateProductServiceTest {
     public void given_valid_product_when_create_service_invoked_then_returns_product_dto() {
 
         // Given
-        Establishment establishment = new Establishment(1L, "Establishment 1", "Address 1");
         TypeOfProduct typeOfProduct = new TypeOfProduct(1L, "Type 1");
 
         Product productToCreate = new Product(); // Create a product to simulate the request

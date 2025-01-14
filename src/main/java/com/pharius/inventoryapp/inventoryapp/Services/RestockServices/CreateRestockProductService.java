@@ -41,7 +41,6 @@ public class CreateRestockProductService
 
             return ResponseEntity.status(HttpStatus.CREATED).body(new RestockProduct(restockProduct));
         }
-        //TODO: Service it's returning a thousand postman lines. It should return the restockProduct object;
 
         return ResponseEntity.notFound().build();
 

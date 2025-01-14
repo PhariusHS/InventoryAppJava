@@ -1,6 +1,6 @@
 package com.pharius.inventoryapp.inventoryapp.Models.InventoryModels;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;

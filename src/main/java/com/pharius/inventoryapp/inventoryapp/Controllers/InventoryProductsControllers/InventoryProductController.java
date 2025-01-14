@@ -31,13 +31,13 @@ public class InventoryProductController  {
     
 
 
-    @GetMapping("/product")
+    @GetMapping
     public ResponseEntity<List<InventoryProducts>> getAllInventoryProducts() {
         return getAllInventoryProductsService.execute(null);
     }
     
 
-    @PostMapping("/product")
+    @PostMapping
     public ResponseEntity<InventoryProducts> createInventoryProduct (@RequestBody InventoryProducts inventoryProducts, @RequestParam Long inventoryId, @RequestParam Long productId) {
         return createInventoryProductService.execute(inventoryProducts, inventoryId, productId);
     }
