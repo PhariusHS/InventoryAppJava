@@ -18,7 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
-import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;

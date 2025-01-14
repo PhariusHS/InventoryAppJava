@@ -3,7 +3,6 @@ package com.pharius.inventoryapp.inventoryapp.Models.InventoryModels;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 

@@ -3,8 +3,8 @@ package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 
 import jakarta.annotation.Nullable;
@@ -25,6 +25,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "restockId")
 public class Restock {
 
     @Id
