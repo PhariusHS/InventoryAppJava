@@ -1,9 +1,7 @@
 package com.pharius.inventoryapp.inventoryapp.Controllers.InventoryProductsControllers;
 
-import java.util.List;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.CreateInventoryProductService;
-import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.GetAllInventoryProductsService;
 
 
 @RestController
@@ -20,21 +17,12 @@ import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.GetAllIn
 public class InventoryProductController  {
     
 
-    private final GetAllInventoryProductsService getAllInventoryProductsService;
     private final CreateInventoryProductService createInventoryProductService;
 
-    public InventoryProductController( GetAllInventoryProductsService getAllInventoryProductsService, CreateInventoryProductService createInventoryProductService) {
-        this.getAllInventoryProductsService = getAllInventoryProductsService;
+    public InventoryProductController(CreateInventoryProductService createInventoryProductService) {
         this.createInventoryProductService = createInventoryProductService;
     }
 
-    
-
-
-    @GetMapping
-    public ResponseEntity<List<InventoryProducts>> getAllInventoryProducts() {
-        return getAllInventoryProductsService.execute(null);
-    }
     
 
     @PostMapping
