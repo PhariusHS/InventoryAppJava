@@ -40,7 +40,7 @@ public class Restock {
 
     private LocalDateTime localDateTime; // Date and time of restock
 
-    @OneToMany(mappedBy="restock", cascade= CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="restock", cascade= CascadeType.ALL)
     @Nullable
     private Set<RestockProduct> restockProducts;
 

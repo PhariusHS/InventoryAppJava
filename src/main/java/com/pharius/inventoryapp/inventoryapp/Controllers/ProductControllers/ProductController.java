@@ -51,7 +51,7 @@ public class ProductController {
     }
 
     // Get one product
-    @GetMapping("/{id}")
+    @GetMapping("/{productId}")
     public ResponseEntity<ProductDTO> getProductById(@PathVariable Long productId) {
 
         return getProductByIdService.execute(productId);
@@ -67,15 +67,13 @@ public class ProductController {
     }
 
     // Update a product by productId
-    @PutMapping("/{id}")
+    @PutMapping("/{productId}")
     public ResponseEntity<ProductDTO> updateProduct(@PathVariable Long productId, @RequestBody Product productDetails) {
-
         return updateProductService.execute(new UpdateProductCommand(productId, productDetails));
-
     }
 
     // Delete product
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/{productId}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long productId) {
 
         return deleteProductService.execute(productId);
