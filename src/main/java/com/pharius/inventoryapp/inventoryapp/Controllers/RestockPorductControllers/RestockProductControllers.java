@@ -1,7 +1,10 @@
 package com.pharius.inventoryapp.inventoryapp.Controllers.RestockPorductControllers;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,21 +12,35 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.CreateRestockProductService;
+import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.DeleteRestockProductService;
+import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.UpdateRestockProductCommand;
+import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.UpdateRestockProductService;
 
 @RestController
 @RequestMapping("/restock/product")
 public class RestockProductControllers {
 
     private final CreateRestockProductService createRestockProductService;
+    private final DeleteRestockProductService deleteRestockProductService;
+    private final UpdateRestockProductService updateRestockProductService;
 
-    public RestockProductControllers(CreateRestockProductService createRestockProductService) {
+    public RestockProductControllers(CreateRestockProductService createRestockProductService,
+            DeleteRestockProductService deleteRestockProductService, UpdateRestockProductService updateRestockProductService) {
         this.createRestockProductService = createRestockProductService;
+        this.deleteRestockProductService = deleteRestockProductService;
+        this.updateRestockProductService = updateRestockProductService;
     }
-
     @PostMapping
     public ResponseEntity<RestockProduct> createRestockProduct(@RequestBody RestockProduct restockProduct,
             @RequestParam Long productId, @RequestParam Long restockId) {
         return createRestockProductService.execute(restockProduct, productId, restockId);
     }
-
+    @PutMapping("/{id}")
+    public ResponseEntity<RestockProduct> updateRestockProduct(@PathVariable Long id, @RequestBody RestockProduct restockProductDetails){
+        return updateRestockProductService.execute(new UpdateRestockProductCommand(id, restockProductDetails));
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteRestockProduc(@PathVariable Long restockProductId) {
+        return deleteRestockProductService.execute(restockProductId);
+    }
 }
