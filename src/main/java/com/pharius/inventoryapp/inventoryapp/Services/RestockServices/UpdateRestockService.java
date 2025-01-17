@@ -19,27 +19,19 @@ public class UpdateRestockService implements Command<UpdateRestockCommand, Resto
     public UpdateRestockService(RestockRepository restockRepository) {
         this.restockRepository = restockRepository;
     }
-
     @Override
     public ResponseEntity<Restock> execute(UpdateRestockCommand command) {
 
         Optional<Restock> foundedRestock = restockRepository.findById(command.getId());
-
         if (foundedRestock.isPresent()) {
-            
             Restock existingRestock = foundedRestock.get(); // Get the new restock
-            LocalDateTime localDateTime = LocalDateTime.now();
-
+            LocalDateTime localDateTime = LocalDateTime.now(); // Get the date of modification
             existingRestock.setRestockId(command.getId()); // Set the restockId
-            existingRestock.setLocalDateTime(localDateTime);//Set the modification date
-
-           Restock updatedRestock = restockRepository.save(existingRestock); // Save the new restock
-
+            existingRestock.setLocalDateTime(localDateTime);// Set the modification date
+            Restock updatedRestock = restockRepository.save(existingRestock); // Save the new restock
             return ResponseEntity.status(HttpStatus.OK).body(new Restock(updatedRestock)); // Return the new restock
         }
-
         return null; // TODO error handling
-
     }
 
 }
