@@ -40,7 +40,7 @@ public class RestockProductControllers {
         return updateRestockProductService.execute(new UpdateRestockProductCommand(id, restockProductDetails));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRestockProduc(@PathVariable Long restockProductId) {
+    public ResponseEntity<Void> deleteRestockProduct(@PathVariable Long restockProductId) {
         return deleteRestockProductService.execute(restockProductId);
     }
 }

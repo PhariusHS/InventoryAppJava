@@ -20,15 +20,14 @@ public class UpdateProductService implements Command<UpdateProductCommand, Produ
     }
 
     @Override
-    public ResponseEntity<ProductDTO> execute(UpdateProductCommand command) {
+    public ResponseEntity<ProductDTO> execute(UpdateProductCommand updateProductCommand) {
         // Get the product by productId
-        Optional<Product> productOptional = productRepository.findById(command.getId());
-        if (productOptional.isPresent()) {
-            Product product = command.getProduct(); // Get the new product
-            product.setProductId(command.getId());
-            productRepository.save(product); // Save the new product
-
-            return ResponseEntity.status(HttpStatus.OK).body(new ProductDTO(product));
+        Optional<Product> foundedProduct = productRepository.findById(updateProductCommand.getId());
+        if (foundedProduct.isPresent()) {
+            Product existingProduct = updateProductCommand.getProduct(); // Get the new product
+            existingProduct.setProductId(updateProductCommand.getId());
+            Product updatedProduct = productRepository.save(existingProduct); // Save the new product
+            return ResponseEntity.status(HttpStatus.OK).body(new ProductDTO(updatedProduct));
         }
         return null; // TODO error handling
     }

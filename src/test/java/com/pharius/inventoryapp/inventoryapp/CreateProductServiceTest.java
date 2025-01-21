@@ -28,9 +28,7 @@ public class CreateProductServiceTest {
     private ProductRepository productRepository;
     @Mock
     private TypeOfProductRepository typeOfProductRepository;
-
-    @Mock
-
+    
     @InjectMocks
     private CreateProductService createProductService;
 
