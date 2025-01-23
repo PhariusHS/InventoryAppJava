@@ -4,11 +4,13 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryProductsRepository;
 
+@Service
 public class DeleteInventoryProductService implements Command<Long, InventoryProducts> {
 
     private final InventoryProductsRepository inventoryProductsRepository;
