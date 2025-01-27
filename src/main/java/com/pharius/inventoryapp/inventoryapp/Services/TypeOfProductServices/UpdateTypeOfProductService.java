@@ -24,7 +24,9 @@ public class UpdateTypeOfProductService implements Command<UpdateTypeOfProductCo
         if(foundedTypeOfProduct.isPresent()){
             TypeOfProduct existingTypeOfProduct = foundedTypeOfProduct.get();
             existingTypeOfProduct.setTypeOfProductId(typeOfProductCommand.getId());
+            
             TypeOfProduct updatedTypeOfProduct = typeOfProductRepository.save(existingTypeOfProduct);
+
             return ResponseEntity.status(HttpStatus.OK).body(new TypeOfProduct(updatedTypeOfProduct));
         }
         return null; //TODO: Handling errors and validation
