@@ -27,6 +27,7 @@ public class SecurityConfig {
                         .disable())
                 .authorizeHttpRequests(authRequest -> authRequest
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/product/**").hasAnyAuthority("USER", "ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement(sessionManager -> 
                     sessionManager
