@@ -11,7 +11,7 @@ import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryPro
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryProductsRepository;
 
 @Service
-public class DeleteInventoryProductService implements Command<Long, InventoryProducts> {
+public class DeleteInventoryProductService implements Command<Long, Void> {
 
     private final InventoryProductsRepository inventoryProductsRepository;
 
@@ -20,7 +20,7 @@ public class DeleteInventoryProductService implements Command<Long, InventoryPro
     }
 
     @Override
-    public ResponseEntity<InventoryProducts> execute(Long inventoryProductId) {
+    public ResponseEntity<Void> execute(Long inventoryProductId) {
         Optional<InventoryProducts> foundedInventoryProduct = inventoryProductsRepository.findById(inventoryProductId);
         if (foundedInventoryProduct.isPresent()) {
             inventoryProductsRepository.deleteById(inventoryProductId);
