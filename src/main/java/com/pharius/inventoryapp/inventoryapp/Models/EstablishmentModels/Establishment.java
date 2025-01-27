@@ -23,10 +23,4 @@ public class Establishment {
     private String location;
 
 
-    public Establishment(Establishment establishment) {
-        this.establishmentId = establishment.getEstablishmentId();
-        this.name = establishment.getName();
-        this.location = establishment.getLocation();
-    }
-
 }

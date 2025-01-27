@@ -4,11 +4,13 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockRepository;
 
+@Service
 public class GetRestockByIdService implements Query<Long, Restock> {
 
     private final RestockRepository restockRepository;

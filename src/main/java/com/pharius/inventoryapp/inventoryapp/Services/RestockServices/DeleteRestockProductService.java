@@ -4,11 +4,13 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockProductRepository;
 
+@Service
 public class DeleteRestockProductService implements Command<Long, Void> {
     
     private final RestockProductRepository restockProductRepository;
