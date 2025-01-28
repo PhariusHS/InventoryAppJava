@@ -28,7 +28,7 @@ public class GetRestockByIdService implements Query<Long, Restock> {
         if (foundedRestock.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(new Restock(foundedRestock.get()));
         }
-        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restcock");
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restock");
     }
 
 }

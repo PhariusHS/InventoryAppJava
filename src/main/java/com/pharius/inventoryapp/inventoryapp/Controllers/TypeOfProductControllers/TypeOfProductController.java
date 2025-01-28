@@ -44,22 +44,22 @@ public class TypeOfProductController {
     }
     @GetMapping
     public ResponseEntity<List<TypeOfProduct>> getAllTypeOfProducts() {
-        return getAllTypesOfProductsService.execute(null); // TODO: Add validation, error handling;
+        return getAllTypesOfProductsService.execute(null);
     }
     @GetMapping("/{typeOfProductId}")
-    public ResponseEntity<TypeOfProduct> getTypeOfProductById(@PathVariable Long id) {
-        return getTypeOfProductByIdService.execute(id); // TODO: Add validation, error handling;
+    public ResponseEntity<TypeOfProduct> getTypeOfProductById(@PathVariable Long typeOfProductId) {
+        return getTypeOfProductByIdService.execute(typeOfProductId); 
     }
     @PostMapping
     public ResponseEntity<TypeOfProduct> createTypeOfProduct(@RequestBody TypeOfProduct typeOfProduct) {
-        return createTypeOfProductService.execute(typeOfProduct); // TODO: Add validation, error handling;
+        return createTypeOfProductService.execute(typeOfProduct);
     }
     @PutMapping("/{typeOfProductId}")
     public ResponseEntity<TypeOfProduct> updateTypeOfProduct(@PathVariable Long typeOfProductId, @RequestBody TypeOfProduct typeOfProductDetails) {
         return updateTypeOfProductService.execute(new UpdateTypeOfProductCommand(typeOfProductId, typeOfProductDetails));
     }
     @DeleteMapping("/{typeOfProductId}")
-    public ResponseEntity<Void> deleteTypeOfProduct(@PathVariable Long id) {
-        return deleteTypeOfProductService.execute(id); // TODO: Add validation, error handling;
+    public ResponseEntity<Void> deleteTypeOfProduct(@PathVariable Long typeOfProductId) {
+        return deleteTypeOfProductService.execute(typeOfProductId);
     }
 }
