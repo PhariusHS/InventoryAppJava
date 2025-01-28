@@ -21,9 +21,8 @@ public class GetAllProductsService implements Query<Void, List<Product>> {
 
     @Override
     public ResponseEntity<List<Product>> execute(Void input) {
-
         List<Product> products = productRepository.findAll();
-
+        //If there's not products just returns an empty list
         return ResponseEntity.status(HttpStatus.OK).body(products);
     }
 

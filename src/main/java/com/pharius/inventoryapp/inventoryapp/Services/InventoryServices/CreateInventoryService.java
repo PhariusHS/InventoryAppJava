@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.RelationalCommand;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
 import com.pharius.inventoryapp.inventoryapp.Repositories.EstablishmentRepository;
@@ -28,14 +30,12 @@ public class CreateInventoryService implements RelationalCommand<Inventory, Inve
 
     @Override
     public ResponseEntity<Inventory> execute(Inventory inventory, Long establishmentId) {
-
         Optional<Establishment> foundedEstablishment = establishmentRepository.findById(establishmentId);
-        if (!foundedEstablishment.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        if (foundedEstablishment.isPresent()) {
+            inventory.setEstablishment(foundedEstablishment.get());
+            Inventory createdInventory = inventoryRepository.save(inventory);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new Inventory(createdInventory));
         }
-
-        inventory.setEstablishment(foundedEstablishment.get());
-        Inventory createdInventory = inventoryRepository.save(inventory);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new Inventory(createdInventory));
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Establishment");
     }
 }

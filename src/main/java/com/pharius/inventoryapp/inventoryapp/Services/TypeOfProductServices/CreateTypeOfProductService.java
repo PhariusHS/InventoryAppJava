@@ -19,11 +19,8 @@ public class CreateTypeOfProductService implements Command<TypeOfProduct, TypeOf
 
     @Override
     public ResponseEntity<TypeOfProduct> execute(TypeOfProduct typeOfProduct) {
-
         TypeOfProduct savedType = typeOfProductRepository.save(typeOfProduct); // Save the new typeOfProduct
-
         return ResponseEntity.status(HttpStatus.CREATED).body(new TypeOfProduct(savedType));
-
     }
 
 }

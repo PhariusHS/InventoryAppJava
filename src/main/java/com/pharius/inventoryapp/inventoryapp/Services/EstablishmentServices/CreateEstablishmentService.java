@@ -25,10 +25,7 @@ public class CreateEstablishmentService implements Command<Establishment, Establ
     public ResponseEntity<EstablishmentDTO> execute(Establishment establishment) {
 
         Establishment savedEstablishment = establishmentRepository.save(establishment);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(new EstablishmentDTO(savedEstablishment));
-
-
     }
     
 }

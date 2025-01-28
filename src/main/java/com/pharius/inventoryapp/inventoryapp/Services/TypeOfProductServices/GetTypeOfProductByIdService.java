@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
 import com.pharius.inventoryapp.inventoryapp.Repositories.TypeOfProductRepository;
 
@@ -21,15 +23,11 @@ public class GetTypeOfProductByIdService implements Query<Long, TypeOfProduct> {
 
     @Override
     public ResponseEntity<TypeOfProduct> execute(Long id) {
-
         Optional<TypeOfProduct> foundedType = typeOfProductRepository.findById(id);
-
         if (foundedType.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(foundedType.get());
         }
-
-        return null;
-
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Type Of Product");
     }
 
 }

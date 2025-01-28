@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
+import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.UpdateTypeOfProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.TypeOfProductServices.CreateTypeOfProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.TypeOfProductServices.DeleteTypeOfProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.TypeOfProductServices.GetAllTypesOfProductsService;
 import com.pharius.inventoryapp.inventoryapp.Services.TypeOfProductServices.GetTypeOfProductByIdService;
-import com.pharius.inventoryapp.inventoryapp.Services.TypeOfProductServices.UpdateTypeOfProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.TypeOfProductServices.UpdateTypeOfProductService;
 
 import org.springframework.http.ResponseEntity;

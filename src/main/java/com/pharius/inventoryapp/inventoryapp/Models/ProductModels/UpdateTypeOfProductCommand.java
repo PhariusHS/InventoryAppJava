@@ -1,6 +1,5 @@
-package com.pharius.inventoryapp.inventoryapp.Services.TypeOfProductServices;
+package com.pharius.inventoryapp.inventoryapp.Models.ProductModels;
 
-import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
 import lombok.Data;
 
 @Data

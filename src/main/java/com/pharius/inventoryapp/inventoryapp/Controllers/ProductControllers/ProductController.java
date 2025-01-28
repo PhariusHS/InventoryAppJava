@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.ProductDTO;
+import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.UpdateProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.CreateProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.DeleteProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.GetAllProductsService;
 import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.GetProductByIdService;
-import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.UpdateProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.UpdateProductService;
 
 @RestController

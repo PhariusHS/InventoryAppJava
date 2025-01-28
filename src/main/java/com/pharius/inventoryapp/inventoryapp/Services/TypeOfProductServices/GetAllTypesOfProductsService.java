@@ -21,11 +21,8 @@ public class GetAllTypesOfProductsService implements Query<Void, List<TypeOfProd
 
     @Override
     public ResponseEntity<List<TypeOfProduct>> execute(Void typesOfProducts) {
-
         List<TypeOfProduct> types = typeOfProductRepository.findAll();
-
         return ResponseEntity.status(HttpStatus.OK).body(types);
-
     }
 
 }

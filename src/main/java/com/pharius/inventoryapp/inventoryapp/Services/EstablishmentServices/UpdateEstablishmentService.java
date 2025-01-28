@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.EstablishmentDTO;
+import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.UpdateEstablishmentCommand;
 import com.pharius.inventoryapp.inventoryapp.Repositories.EstablishmentRepository;
 
 @Service

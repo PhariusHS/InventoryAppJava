@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.RelationalCommand;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.ProductDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
@@ -28,11 +30,11 @@ public class CreateProductService implements RelationalCommand<Product, ProductD
     public ResponseEntity<ProductDTO> execute(Product product, Long typeOfProductId) {
         Optional<TypeOfProduct> foundedTypeOfProduct  = typeOfProductRepository.findById(typeOfProductId); // check if type of product exists
         if (foundedTypeOfProduct.isPresent()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            product.setTypeOfProduct(foundedTypeOfProduct.get());
+            Product savedProduct = productRepository.save(product);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new ProductDTO(savedProduct));
         }
-        product.setTypeOfProduct(foundedTypeOfProduct.get());
-        Product savedProduct = productRepository.save(product);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ProductDTO(savedProduct));
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Type of product");
     }
 
 }

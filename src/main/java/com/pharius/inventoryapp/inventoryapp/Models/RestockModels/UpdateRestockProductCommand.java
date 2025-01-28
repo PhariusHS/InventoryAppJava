@@ -1,6 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Services.RestockServices;
-
-import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
+package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 
 import lombok.Data;
 

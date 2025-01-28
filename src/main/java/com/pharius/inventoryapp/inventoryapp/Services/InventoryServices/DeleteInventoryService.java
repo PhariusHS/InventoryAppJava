@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryRepository;
 
@@ -28,8 +30,7 @@ public class DeleteInventoryService implements Command<Long, Void>
             inventoryRepository.deleteById(inventoryId);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
-
-        return null;
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Inventory");
     }
 
 }
