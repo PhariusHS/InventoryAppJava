@@ -11,6 +11,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,7 @@ public class RestockProduct {
     @JoinColumn(name="restock_id")
     private Restock restock;
 
+    @Positive(message = "Restocked product has to be at least 1")
     private int quantity;
     
     public RestockProduct(RestockProduct restockProduct) {

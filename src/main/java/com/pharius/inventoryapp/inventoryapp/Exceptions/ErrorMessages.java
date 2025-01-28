@@ -7,7 +7,9 @@ import lombok.Getter;
 @Getter
 public enum ErrorMessages {
     
-    ENTITY_NOT_FOUND(" Not Found", HttpStatus.NOT_FOUND.value(), "Not entity with ID founded");
+    ENTITY_NOT_FOUND(" Not Found", HttpStatus.NOT_FOUND.value(), "Not entity with ID founded")
+    ;
+
 
     private final String message;
     private final int status;

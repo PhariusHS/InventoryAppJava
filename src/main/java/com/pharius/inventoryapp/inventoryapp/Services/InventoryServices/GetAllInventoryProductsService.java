@@ -21,9 +21,8 @@ public class GetAllInventoryProductsService implements Query<Void, List<Inventor
 
     @Override
     public ResponseEntity<List<InventoryProducts>> execute(Void inventoryProducts) {
-
         List<InventoryProducts> foundedInventoryProducts = inventoryProductsRepository.findAll();
-
+        //
         return ResponseEntity.status(HttpStatus.OK).body(foundedInventoryProducts);
 
     }
