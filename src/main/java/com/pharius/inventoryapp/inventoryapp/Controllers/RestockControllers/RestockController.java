@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.UpdateRestockCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.CreateRestockService;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.DeleteRestockService;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.GetAllRestocksService;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.GetRestockByIdService;
-import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.UpdateRestockCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.UpdateRestockService;
 
 import java.util.List;

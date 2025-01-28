@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockRepository;
 
@@ -26,8 +28,7 @@ public class GetRestockByIdService implements Query<Long, Restock> {
         if (foundedRestock.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(new Restock(foundedRestock.get()));
         }
-
-        return null; // TODO error handling
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restcock");
     }
 
 }

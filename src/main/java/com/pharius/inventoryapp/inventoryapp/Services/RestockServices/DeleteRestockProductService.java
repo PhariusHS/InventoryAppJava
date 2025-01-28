@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockProductRepository;
 
@@ -30,7 +32,7 @@ public class DeleteRestockProductService implements Command<Long, Void> {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
 
-        return null; //TODO: Error handling and validation
+       throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "RestockProduct");
 
     }
  

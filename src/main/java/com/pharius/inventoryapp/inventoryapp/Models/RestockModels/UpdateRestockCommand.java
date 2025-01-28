@@ -1,8 +1,6 @@
-package com.pharius.inventoryapp.inventoryapp.Services.RestockServices;
+package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 
 import java.time.LocalDateTime;
-
-import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
 
 import lombok.Data;
 

@@ -1,6 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices;
-
-import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
+package com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels;
 
 import lombok.Data;
 

@@ -1,6 +1,4 @@
-package com.pharius.inventoryapp.inventoryapp.Services.InventoryServices;
-
-import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
+package com.pharius.inventoryapp.inventoryapp.Models.InventoryModels;
 
 import lombok.Data;
 

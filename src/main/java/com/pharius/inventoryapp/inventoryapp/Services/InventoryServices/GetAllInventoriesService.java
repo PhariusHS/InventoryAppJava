@@ -22,6 +22,7 @@ public class GetAllInventoriesService implements Query<Void, List<Inventory>> {
     @Override
     public ResponseEntity<List<Inventory>> execute(Void input) {
         List<Inventory> inventories = inventoryRepository.findAll();
+        //If there's no inventories just returns an empty list
         return ResponseEntity.status(HttpStatus.OK).body(inventories);
     }
 

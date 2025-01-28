@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.UpdateRestockCommand;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockRepository;
 
 @Service

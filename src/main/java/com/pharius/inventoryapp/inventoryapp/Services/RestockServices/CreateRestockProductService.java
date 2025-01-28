@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.DoubleRelationalCommand;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
@@ -34,16 +36,16 @@ public class CreateRestockProductService
         Optional<Restock> foundedRestock = restockRepository.findById(restockId);
         Optional<Product> foundedProduct = productRepository.findById(productId);
 
-        if (foundedProduct.isPresent() && foundedRestock.isPresent()) {
-            restockProduct.setProduct(foundedProduct.get());
-            restockProduct.setRestock(foundedRestock.get());
-            restockProductRepository.save(restockProduct);
-
-            return ResponseEntity.status(HttpStatus.CREATED).body(new RestockProduct(restockProduct));
+        if (!foundedProduct.isPresent()) {
+            throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Product");
         }
-
-        return ResponseEntity.notFound().build();
-
+        if (!foundedRestock.isPresent()){
+            throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restock");
+        }
+        restockProduct.setProduct(foundedProduct.get());
+        restockProduct.setRestock(foundedRestock.get());
+        restockProductRepository.save(restockProduct);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new RestockProduct(restockProduct));
     }
 
 }

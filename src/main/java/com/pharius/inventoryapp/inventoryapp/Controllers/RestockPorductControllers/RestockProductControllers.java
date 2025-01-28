@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.UpdateRestockProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.CreateRestockProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.DeleteRestockProductService;
-import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.UpdateRestockProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.UpdateRestockProductService;
 
 @RestController

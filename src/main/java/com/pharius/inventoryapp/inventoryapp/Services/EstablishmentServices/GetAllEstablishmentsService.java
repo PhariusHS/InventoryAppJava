@@ -23,9 +23,8 @@ public class GetAllEstablishmentsService implements Query<Void, List<Establishme
 
     @Override
     public ResponseEntity<List<Establishment>> execute(Void input) {
-       
             List<Establishment> establishments = establishmentRepository.findAll();
-
+            //If there's not establishments just returns an empty list
             return ResponseEntity.status(HttpStatus.OK).body(establishments);
     }
     

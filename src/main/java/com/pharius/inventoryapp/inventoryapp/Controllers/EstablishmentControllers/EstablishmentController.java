@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.EstablishmentDTO;
+import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.UpdateEstablishmentCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices.CreateEstablishmentService;
 import com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices.DeleteEstablishmentService;
 import com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices.GetAllEstablishmentsService;
 import com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices.GetEstablishmentByIdService;
-import com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices.UpdateEstablishmentCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices.UpdateEstablishmentService;
 
 import java.util.List;

@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.RelationalCommand;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
 import com.pharius.inventoryapp.inventoryapp.Repositories.EstablishmentRepository;
@@ -28,16 +30,13 @@ public class CreateRestockService implements RelationalCommand<Restock, Restock,
     public ResponseEntity<Restock> execute(Restock restock, Long establishmentId) {
 
         Optional<Establishment> foundedEstablishment = establishmentRepository.findById(establishmentId);
-        if (!foundedEstablishment.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        if (foundedEstablishment.isPresent()) {
+            restock.setEstablishment(foundedEstablishment.get());
+            restock.setLocalDateTime(LocalDateTime.now());
+            Restock createdRestock = restockRepository.save(restock);
+            return ResponseEntity.status(HttpStatus.CREATED).body(new Restock(createdRestock));
         }
-
-        restock.setEstablishment(foundedEstablishment.get());
-        restock.setLocalDateTime(LocalDateTime.now());
-
-        Restock createdRestock = restockRepository.save(restock);
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(new Restock(createdRestock));
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restock");
     }
 
 }

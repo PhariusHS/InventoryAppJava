@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.TypeOfProduct;
+import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.UpdateTypeOfProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Repositories.TypeOfProductRepository;
 
 @Service
@@ -24,12 +27,10 @@ public class UpdateTypeOfProductService implements Command<UpdateTypeOfProductCo
         if(foundedTypeOfProduct.isPresent()){
             TypeOfProduct existingTypeOfProduct = foundedTypeOfProduct.get();
             existingTypeOfProduct.setTypeOfProductId(typeOfProductCommand.getId());
-            
             TypeOfProduct updatedTypeOfProduct = typeOfProductRepository.save(existingTypeOfProduct);
-
             return ResponseEntity.status(HttpStatus.OK).body(new TypeOfProduct(updatedTypeOfProduct));
         }
-        return null; //TODO: Handling errors and validation
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Type Of Product");
     }
 
 }

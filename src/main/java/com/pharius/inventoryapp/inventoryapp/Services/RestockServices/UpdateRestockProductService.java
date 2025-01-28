@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.UpdateRestockProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockProductRepository;
 
 @Service
@@ -30,7 +33,7 @@ public class UpdateRestockProductService implements Command<UpdateRestockProduct
             RestockProduct updatedRestockProduct = restockProductRepository.save(existingRestockProduct);
             return ResponseEntity.status(HttpStatus.OK).body(new RestockProduct(updatedRestockProduct));
         }
-        return null; // TODO: error handling and validation
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "RestockProduct");
     }
 
 }

@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.UpdateInventoryProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.CreateInventoryProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.DeleteInventoryProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.GetAllInventoryProductsService;
-import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.UpdateInventoryProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.UpdateInventoryProductService;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,7 +53,7 @@ public class InventoryProductController {
     public ResponseEntity<InventoryProducts> updateInventoryProduct(@PathVariable Long id, @RequestBody InventoryProducts inventoryProductsDetails) {
         return updateInventoryProductService.execute(new UpdateInventoryProductCommand(id, inventoryProductsDetails));
     }
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteInventoryProduct(@PathVariable Long id){
         return deleteInventoryProductService.execute(id);
     }

@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
 
@@ -20,18 +22,13 @@ public class DeleteProductService implements Command<Long, Void> {
     }
 
     public ResponseEntity<Void> execute(Long productId) {
-
         // Get the product to delete by productId
-
         Optional<Product> productOptional = productRepository.findById(productId);
-
         if (productOptional.isPresent()) {
             productRepository.deleteById(productId);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
-
-        return null; // TODO error handling
-
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Product");
     }
 
 }

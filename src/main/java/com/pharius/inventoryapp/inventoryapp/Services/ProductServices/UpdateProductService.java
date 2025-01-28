@@ -7,8 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.ProductDTO;
+import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.UpdateProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
 
 @Service
@@ -29,7 +32,7 @@ public class UpdateProductService implements Command<UpdateProductCommand, Produ
             Product updatedProduct = productRepository.save(existingProduct); // Save the new product
             return ResponseEntity.status(HttpStatus.OK).body(new ProductDTO(updatedProduct));
         }
-        return null; // TODO error handling
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Product");
     }
 
 }

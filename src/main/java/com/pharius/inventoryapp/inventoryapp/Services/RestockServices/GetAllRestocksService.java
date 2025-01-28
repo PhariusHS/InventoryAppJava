@@ -21,9 +21,7 @@ public class GetAllRestocksService implements Query<Void, List<Restock>> {
 
     @Override
     public ResponseEntity<List<Restock>> execute(Void input) {
-
         List<Restock> restocks = restockRepository.findAll();
-
         return ResponseEntity.status(HttpStatus.OK).body(restocks);
     }
 }
