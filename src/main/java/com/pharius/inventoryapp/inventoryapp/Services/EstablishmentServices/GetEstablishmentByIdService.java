@@ -29,7 +29,6 @@ public class GetEstablishmentByIdService implements Query<Long, EstablishmentDTO
        if(foundedEstablishment.isPresent()) {
           return ResponseEntity.status(HttpStatus.OK).body(new EstablishmentDTO(foundedEstablishment.get()));
        }
-       //TODO: Data validation
         throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Establishment");
     }
 

@@ -11,6 +11,7 @@ import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProductsDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryProductsRepository;
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryRepository;
@@ -18,7 +19,7 @@ import com.pharius.inventoryapp.inventoryapp.Repositories.ProductRepository;
 
 @Service
 public class CreateInventoryProductService
-        implements DoubleRelationalCommand<InventoryProducts, InventoryProducts, Long, Long> {
+        implements DoubleRelationalCommand<InventoryProducts, InventoryProductsDTO, Long, Long> {
 
     private final InventoryProductsRepository inventoryProductsRepository;
     private final InventoryRepository inventoryRepository;
@@ -32,7 +33,7 @@ public class CreateInventoryProductService
     }
 
     @Override
-    public ResponseEntity<InventoryProducts> execute(InventoryProducts inventoryProducts, Long inventoryId,
+    public ResponseEntity<InventoryProductsDTO> execute(InventoryProducts inventoryProducts, Long inventoryId,
             Long productId) {
 
         Optional<Inventory> foundedInventory = inventoryRepository.findById(inventoryId);
@@ -46,7 +47,7 @@ public class CreateInventoryProductService
         inventoryProducts.setInventory(foundedInventory.get());
         inventoryProducts.setProduct(foundedProduct.get());
         InventoryProducts savedInventoryProducts = inventoryProductsRepository.save(inventoryProducts);
-        return ResponseEntity.status(HttpStatus.OK).body(savedInventoryProducts);
+        return ResponseEntity.status(HttpStatus.OK).body(new InventoryProductsDTO(savedInventoryProducts));
     }
 
 }

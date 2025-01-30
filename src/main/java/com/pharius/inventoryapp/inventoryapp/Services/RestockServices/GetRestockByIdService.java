@@ -10,10 +10,11 @@ import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockDTO;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockRepository;
 
 @Service
-public class GetRestockByIdService implements Query<Long, Restock> {
+public class GetRestockByIdService implements Query<Long, RestockDTO> {
 
     private final RestockRepository restockRepository;
 
@@ -22,11 +23,10 @@ public class GetRestockByIdService implements Query<Long, Restock> {
     }
 
     @Override
-    public ResponseEntity<Restock> execute(Long restockId) {
-
+    public ResponseEntity<RestockDTO> execute(Long restockId) {
         Optional<Restock> foundedRestock = restockRepository.findById(restockId);
         if (foundedRestock.isPresent()) {
-            return ResponseEntity.status(HttpStatus.OK).body(new Restock(foundedRestock.get()));
+            return ResponseEntity.status(HttpStatus.OK).body(new RestockDTO(foundedRestock.get()));
         }
         throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restock");
     }

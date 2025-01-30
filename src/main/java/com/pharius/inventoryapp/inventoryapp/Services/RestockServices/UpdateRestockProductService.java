@@ -10,11 +10,12 @@ import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProductDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.UpdateRestockProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockProductRepository;
 
 @Service
-public class UpdateRestockProductService implements Command<UpdateRestockProductCommand, RestockProduct> {
+public class UpdateRestockProductService implements Command<UpdateRestockProductCommand, RestockProductDTO> {
     
    private final RestockProductRepository restockProductRepository;
 
@@ -23,7 +24,7 @@ public class UpdateRestockProductService implements Command<UpdateRestockProduct
     }
 
     @Override
-    public ResponseEntity<RestockProduct> execute(UpdateRestockProductCommand updateRestockProductCommand) {
+    public ResponseEntity<RestockProductDTO> execute(UpdateRestockProductCommand updateRestockProductCommand) {
        
         Optional<RestockProduct> foundedRestockProduct = restockProductRepository.findById(updateRestockProductCommand.getId());
 
@@ -31,7 +32,7 @@ public class UpdateRestockProductService implements Command<UpdateRestockProduct
             RestockProduct existingRestockProduct = foundedRestockProduct.get();
             existingRestockProduct.setId(updateRestockProductCommand.getId());
             RestockProduct updatedRestockProduct = restockProductRepository.save(existingRestockProduct);
-            return ResponseEntity.status(HttpStatus.OK).body(new RestockProduct(updatedRestockProduct));
+            return ResponseEntity.status(HttpStatus.OK).body(new RestockProductDTO(updatedRestockProduct));
         }
         throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "RestockProduct");
     }

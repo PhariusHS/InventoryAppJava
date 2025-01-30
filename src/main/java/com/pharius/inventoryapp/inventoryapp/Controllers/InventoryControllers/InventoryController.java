@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.UpdateInventoryCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.CreateInventoryService;
 import com.pharius.inventoryapp.inventoryapp.Services.InventoryServices.DeleteInventoryService;
@@ -50,17 +51,17 @@ public class InventoryController {
     }
 
     @GetMapping("/{inventoryId}")
-    public ResponseEntity<Inventory> getInventoryById(@PathVariable Long id) {
-        return getInventoryByIdService.execute(id);
+    public ResponseEntity<InventoryDTO> getInventoryById(@PathVariable Long inventoryId) {
+        return getInventoryByIdService.execute(inventoryId);
     }
 
     @PostMapping
-    public ResponseEntity<Inventory> createInventory(@RequestBody Inventory inventory,
+    public ResponseEntity<InventoryDTO> createInventory(@RequestBody Inventory inventory,
             @RequestParam Long establishmentId) {
         return createInventoryService.execute(inventory, establishmentId);
     }
     @PutMapping("/{inventoryId}")
-    public ResponseEntity<Inventory> uptadeInventory(@PathVariable Long inventoryId, @RequestBody Inventory inventoryDetails) {    
+    public ResponseEntity<InventoryDTO> uptadeInventory(@PathVariable Long inventoryId, @RequestBody Inventory inventoryDetails) {    
         return updateInventoryService.execute(new UpdateInventoryCommand(inventoryId, inventoryDetails));
     }
     @DeleteMapping("/{inventoryId}")

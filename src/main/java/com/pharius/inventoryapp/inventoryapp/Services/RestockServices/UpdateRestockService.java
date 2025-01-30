@@ -11,11 +11,12 @@ import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.UpdateRestockCommand;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockRepository;
 
 @Service
-public class UpdateRestockService implements Command<UpdateRestockCommand, Restock> {
+public class UpdateRestockService implements Command<UpdateRestockCommand, RestockDTO> {
 
     private final RestockRepository restockRepository;
 
@@ -23,7 +24,7 @@ public class UpdateRestockService implements Command<UpdateRestockCommand, Resto
         this.restockRepository = restockRepository;
     }
     @Override
-    public ResponseEntity<Restock> execute(UpdateRestockCommand command) {
+    public ResponseEntity<RestockDTO> execute(UpdateRestockCommand command) {
 
         Optional<Restock> foundedRestock = restockRepository.findById(command.getId());
         if (foundedRestock.isPresent()) {
@@ -32,7 +33,7 @@ public class UpdateRestockService implements Command<UpdateRestockCommand, Resto
             existingRestock.setRestockId(command.getId()); // Set the restockId
             existingRestock.setLocalDateTime(localDateTime);// Set the modification date
             Restock updatedRestock = restockRepository.save(existingRestock); // Save the new restock
-            return ResponseEntity.status(HttpStatus.OK).body(new Restock(updatedRestock)); // Return the new restock
+            return ResponseEntity.status(HttpStatus.OK).body(new RestockDTO(updatedRestock)); // Return the new restock
         }
          throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restock");
     }

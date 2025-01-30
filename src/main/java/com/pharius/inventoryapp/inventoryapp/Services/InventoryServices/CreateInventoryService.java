@@ -11,12 +11,13 @@ import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryDTO;
 import com.pharius.inventoryapp.inventoryapp.Repositories.EstablishmentRepository;
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryRepository;
 import com.pharius.inventoryapp.inventoryapp.Services.EstablishmentServices.GetEstablishmentByIdService;
 
 @Service
-public class CreateInventoryService implements RelationalCommand<Inventory, Inventory, Long> {
+public class CreateInventoryService implements RelationalCommand<Inventory, InventoryDTO, Long> {
 
     private final InventoryRepository inventoryRepository;
     private final EstablishmentRepository establishmentRepository;
@@ -29,12 +30,12 @@ public class CreateInventoryService implements RelationalCommand<Inventory, Inve
     }
 
     @Override
-    public ResponseEntity<Inventory> execute(Inventory inventory, Long establishmentId) {
+    public ResponseEntity<InventoryDTO> execute(Inventory inventory, Long establishmentId) {
         Optional<Establishment> foundedEstablishment = establishmentRepository.findById(establishmentId);
         if (foundedEstablishment.isPresent()) {
             inventory.setEstablishment(foundedEstablishment.get());
             Inventory createdInventory = inventoryRepository.save(inventory);
-            return ResponseEntity.status(HttpStatus.CREATED).body(new Inventory(createdInventory));
+            return ResponseEntity.status(HttpStatus.CREATED).body(new InventoryDTO(createdInventory));
         }
         throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Establishment");
     }
