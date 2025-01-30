@@ -10,10 +10,11 @@ import com.pharius.inventoryapp.inventoryapp.Controllers.Query;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.Inventory;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryDTO;
 import com.pharius.inventoryapp.inventoryapp.Repositories.InventoryRepository;
 
 @Service
-public class GetInventoryByIdService implements Query<Long, Inventory> {
+public class GetInventoryByIdService implements Query<Long, InventoryDTO> {
 
     private final InventoryRepository inventoryRepository;
 
@@ -22,10 +23,10 @@ public class GetInventoryByIdService implements Query<Long, Inventory> {
     }
 
     @Override
-    public ResponseEntity<Inventory> execute(Long id) {
+    public ResponseEntity<InventoryDTO> execute(Long id) {
         Optional<Inventory> foundedInventory = inventoryRepository.findById(id);
         if (foundedInventory.isPresent()) {
-            return ResponseEntity.status(HttpStatus.OK).body(foundedInventory.get());
+            return ResponseEntity.status(HttpStatus.OK).body(new InventoryDTO(foundedInventory.get()));
         }
         throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Inventory");
     }

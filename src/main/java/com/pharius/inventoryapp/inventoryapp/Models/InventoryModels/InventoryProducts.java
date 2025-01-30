@@ -2,6 +2,7 @@ package com.pharius.inventoryapp.inventoryapp.Models.InventoryModels;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 
@@ -11,8 +12,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +35,7 @@ public class InventoryProducts {
 
     @ManyToOne // One inventory product can belong to one inventory - Every inventory has many inventory products
     @JoinColumn(name = "inventory_id")
+    @JsonIgnore
     private Inventory inventory;
 
     private int quantity;

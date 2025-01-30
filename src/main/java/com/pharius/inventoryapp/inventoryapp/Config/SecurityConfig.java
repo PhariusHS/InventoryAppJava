@@ -27,7 +27,7 @@ public class SecurityConfig {
                         .disable())
                 .authorizeHttpRequests(authRequest -> authRequest
                         .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers("/product/**").hasAnyAuthority("USER", "ADMIN")
+                        //.requestMatchers("**/update", "**/create", "**/delete").hasAuthority("ADMIN")//Just admin can create,update and delete entities TODO: ADD to endpoints
                         .anyRequest().authenticated())
                 .sessionManagement(sessionManager -> 
                     sessionManager

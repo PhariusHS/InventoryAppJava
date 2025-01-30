@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProduct;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockProductDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.UpdateRestockProductCommand;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.CreateRestockProductService;
 import com.pharius.inventoryapp.inventoryapp.Services.RestockServices.DeleteRestockProductService;
@@ -31,12 +32,12 @@ public class RestockProductControllers {
         this.updateRestockProductService = updateRestockProductService;
     }
     @PostMapping
-    public ResponseEntity<RestockProduct> createRestockProduct(@RequestBody RestockProduct restockProduct,
+    public ResponseEntity<RestockProductDTO> createRestockProduct(@RequestBody RestockProduct restockProduct,
             @RequestParam Long productId, @RequestParam Long restockId) {
         return createRestockProductService.execute(restockProduct, productId, restockId);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<RestockProduct> updateRestockProduct(@PathVariable Long id, @RequestBody RestockProduct restockProductDetails){
+    public ResponseEntity<RestockProductDTO> updateRestockProduct(@PathVariable Long id, @RequestBody RestockProduct restockProductDetails){
         return updateRestockProductService.execute(new UpdateRestockProductCommand(id, restockProductDetails));
     }
     @DeleteMapping("/{id}")

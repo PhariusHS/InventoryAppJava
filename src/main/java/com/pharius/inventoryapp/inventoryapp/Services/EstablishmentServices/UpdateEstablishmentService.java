@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.pharius.inventoryapp.inventoryapp.Controllers.Command;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
+import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.EstablishmentDTO;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.UpdateEstablishmentCommand;
@@ -25,17 +27,13 @@ public class UpdateEstablishmentService implements Command<UpdateEstablishmentCo
     public ResponseEntity<EstablishmentDTO> execute(UpdateEstablishmentCommand updateEstablishmentCommand) {
 
         Optional<Establishment> foundedEstablishment = establishmentRepository.findById(updateEstablishmentCommand.getId());
-
         if(foundedEstablishment.isPresent()){
-
         Establishment existingEstablishment = foundedEstablishment.get();
         existingEstablishment.setEstablishmentId(updateEstablishmentCommand.getId());
         Establishment updatedEstablishment = establishmentRepository.save(existingEstablishment);
-
         return ResponseEntity.status(HttpStatus.OK).body(new EstablishmentDTO(updatedEstablishment));
         }
-
-        return null;//TODO: Validation and handling
+        throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Establishment");
     }
     
 

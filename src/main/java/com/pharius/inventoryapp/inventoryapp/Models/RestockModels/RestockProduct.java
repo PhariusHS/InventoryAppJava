@@ -2,6 +2,7 @@ package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 
@@ -34,6 +35,7 @@ public class RestockProduct {
 
     @ManyToOne // One restock product can belong to one restock - Every restock has many restock products
     @JoinColumn(name="restock_id")
+    @JsonIgnore // fix recursion 
     private Restock restock;
 
     @Positive(message = "Restocked product has to be at least 1")

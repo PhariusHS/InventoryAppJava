@@ -12,11 +12,12 @@ import com.pharius.inventoryapp.inventoryapp.Exceptions.EntityNotFoundException;
 import com.pharius.inventoryapp.inventoryapp.Exceptions.ErrorMessages;
 import com.pharius.inventoryapp.inventoryapp.Models.EstablishmentModels.Establishment;
 import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.Restock;
+import com.pharius.inventoryapp.inventoryapp.Models.RestockModels.RestockDTO;
 import com.pharius.inventoryapp.inventoryapp.Repositories.EstablishmentRepository;
 import com.pharius.inventoryapp.inventoryapp.Repositories.RestockRepository;
 
 @Service
-public class CreateRestockService implements RelationalCommand<Restock, Restock, Long> {
+public class CreateRestockService implements RelationalCommand<Restock, RestockDTO, Long> {
 
     private final RestockRepository restockRepository;
     private final EstablishmentRepository establishmentRepository;
@@ -27,14 +28,14 @@ public class CreateRestockService implements RelationalCommand<Restock, Restock,
     }
 
     @Override
-    public ResponseEntity<Restock> execute(Restock restock, Long establishmentId) {
+    public ResponseEntity<RestockDTO> execute(Restock restock, Long establishmentId) {
 
         Optional<Establishment> foundedEstablishment = establishmentRepository.findById(establishmentId);
         if (foundedEstablishment.isPresent()) {
             restock.setEstablishment(foundedEstablishment.get());
             restock.setLocalDateTime(LocalDateTime.now());
             Restock createdRestock = restockRepository.save(restock);
-            return ResponseEntity.status(HttpStatus.CREATED).body(new Restock(createdRestock));
+            return ResponseEntity.status(HttpStatus.CREATED).body(new RestockDTO(createdRestock));
         }
         throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restock");
     }
