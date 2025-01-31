@@ -47,7 +47,7 @@ public class RestockController {
         return getAllRestocksService.execute(null);
     }
     @GetMapping("/{restockId}")
-    public ResponseEntity<Restock> getRestockById(@PathVariable Long restockId) {
+    public ResponseEntity<RestockDTO> getRestockById(@PathVariable Long restockId) {
         return getRestockByIdService.execute(restockId);
     }
     @PostMapping
@@ -56,7 +56,7 @@ public class RestockController {
 
     }
     @PutMapping("/{restockId}")
-    public ResponseEntity<Restock> updateRestock(@PathVariable Long restockId, @RequestBody Restock restockDetails) {
+    public ResponseEntity<RestockDTO> updateRestock(@PathVariable Long restockId, @RequestBody Restock restockDetails) {
         return updateRestockService.execute(new UpdateRestockCommand(restockId, restockDetails));
     }
     @DeleteMapping("/{restockId}")

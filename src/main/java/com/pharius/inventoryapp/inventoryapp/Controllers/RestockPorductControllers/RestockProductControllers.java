@@ -33,8 +33,8 @@ public class RestockProductControllers {
     }
     @PostMapping
     public ResponseEntity<RestockProductDTO> createRestockProduct(@RequestBody RestockProduct restockProduct,
-            @RequestParam Long productId, @RequestParam Long restockId) {
-        return createRestockProductService.execute(restockProduct, productId, restockId);
+            @RequestParam Long inventoryProductId, @RequestParam Long restockId) {
+        return createRestockProductService.execute(restockProduct, inventoryProductId, restockId);
     }
     @PutMapping("/{id}")
     public ResponseEntity<RestockProductDTO> updateRestockProduct(@PathVariable Long id, @RequestBody RestockProduct restockProductDetails){

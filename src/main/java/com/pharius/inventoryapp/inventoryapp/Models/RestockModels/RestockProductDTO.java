@@ -1,6 +1,6 @@
 package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 
-import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
 
 import lombok.Data;
 
@@ -8,12 +8,12 @@ import lombok.Data;
 public class RestockProductDTO {
 
 private Long id;
-private Product product;
+private InventoryProducts inventoryProduct;
 private int quantity;
 
 public RestockProductDTO(RestockProduct restockProduct){
     this.id = restockProduct.getId();
-    this.product = restockProduct.getProduct();
+    this.inventoryProduct = restockProduct.getInventoryProduct();
     this.quantity = restockProduct.getQuantity();
 }
 

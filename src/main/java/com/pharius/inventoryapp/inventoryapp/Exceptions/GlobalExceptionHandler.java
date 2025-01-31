@@ -30,6 +30,10 @@ public class GlobalExceptionHandler {
             exception.getConstraintViolations().iterator().next().getInvalidValue()             // Valor rechazado
         ));
     }
+    @ExceptionHandler
+    public ResponseEntity<ErrorResponse> handleNotEnoughQuantity(QuantityNotAvailableException exception){
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).body(new ErrorResponse(exception.getMessage(), exception.getStatus(), exception.getAdditionalInfo()));
+    }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGenericException(Exception exception) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Unexpected error: " + exception.getMessage());
