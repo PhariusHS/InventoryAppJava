@@ -7,15 +7,13 @@ import lombok.Data;
 @Data
 public class InventoryProductsDTO {
     
-private Long id;
+
 private Product product;
-private int quantity;
+private int stock;
 
 public InventoryProductsDTO(InventoryProducts inventoryProducts){
-    this.id = inventoryProducts.getId();
     this.product = inventoryProducts.getProduct();
-    this.quantity = inventoryProducts.getQuantity();
+    this.stock = inventoryProducts.getStock();
 }    
-
 
 }

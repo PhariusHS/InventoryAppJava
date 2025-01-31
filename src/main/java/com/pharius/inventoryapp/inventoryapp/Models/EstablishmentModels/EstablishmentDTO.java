@@ -9,15 +9,9 @@ public class EstablishmentDTO {
     private String name;
     private String location;
 
-
-
     public EstablishmentDTO(Establishment establishment) {
-        
         this.establishmentId = establishment.getEstablishmentId();
         this.name = establishment.getName();
         this.location = establishment.getLocation();
-
     }
-
-
 }

@@ -35,10 +35,10 @@ public class InventoryProducts {
 
     @ManyToOne // One inventory product can belong to one inventory - Every inventory has many inventory products
     @JoinColumn(name = "inventory_id")
-    @JsonIgnore
+    @JsonIgnore // fix recursion 
     private Inventory inventory;
 
-    private int quantity;
+    private int stock;
 
 
 }

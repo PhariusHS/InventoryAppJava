@@ -4,6 +4,7 @@ package com.pharius.inventoryapp.inventoryapp.Models.RestockModels;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
 import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 
 import jakarta.persistence.Entity;
@@ -30,8 +31,8 @@ public class RestockProduct {
     private Long id;
     
     @ManyToOne // One restock product can belong to one product - Every product has many restock products
-    @JoinColumn(name ="product_id")
-    private Product product;
+    @JoinColumn(name ="inventory_product_id")
+    private InventoryProducts inventoryProduct;
 
     @ManyToOne // One restock product can belong to one restock - Every restock has many restock products
     @JoinColumn(name="restock_id")
@@ -40,13 +41,5 @@ public class RestockProduct {
 
     @Positive(message = "Restocked product has to be at least 1")
     private int quantity;
-    
-    public RestockProduct(RestockProduct restockProduct) {
-        this.id = restockProduct.getId();
-        this.product = restockProduct.getProduct();
-        this.restock = restockProduct.getRestock();
-        this.quantity = restockProduct.getQuantity();
-    }
-
 
 }
