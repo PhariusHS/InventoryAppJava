@@ -23,7 +23,7 @@ import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.GetProduct
 import com.pharius.inventoryapp.inventoryapp.Services.ProductServices.UpdateProductService;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/product")
 public class ProductController {
 
     private final GetAllProductsService getAllProductsService;

@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/establishments")
+@RequestMapping("/establishment")
 public class EstablishmentController {
 
     private final GetAllEstablishmentsService getAllEstablishmentsService;
