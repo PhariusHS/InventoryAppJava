@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.pharius.inventoryapp.inventoryapp.Models.InventoryModels.InventoryProducts;
-import com.pharius.inventoryapp.inventoryapp.Models.ProductModels.Product;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

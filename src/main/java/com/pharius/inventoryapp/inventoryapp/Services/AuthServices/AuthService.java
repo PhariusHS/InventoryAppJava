@@ -30,6 +30,7 @@ public class AuthService {
         UserDetails user = userRepository.findByUsername(request.getUsername()).orElseThrow();
         String token = jwtService.getToken(user);
         return AuthResponse.builder()
+        .message("Successfully log in")
         .token(token)
         .build();
     }
@@ -49,6 +50,7 @@ public class AuthService {
         userRepository.save(user);
 
         return AuthResponse.builder()
+        .message("User successfully created")
         .token(jwtService.getToken(user))
         .build();
     }
