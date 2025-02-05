@@ -98,15 +98,15 @@ Docker-compose up
         "name": "Product name 2",
         "typeOfProduct": {
             "typeOfProductId": 1,
-            "name": "Beer"
+            "name": "Wine"
         }
     },
     {
         "productId": 2,
         "name": "Product name 2",
         "typeOfProduct": {
-            "typeOfProductId": 1,
-            "name": "Wine"
+            "typeOfProductId": 2,
+            "name": "Beer"
         }
     },
     ...
@@ -121,21 +121,21 @@ Docker-compose up
 - **Parameter**:
   - `id` (Long): Product id
     
-**Example response (id = 1)**:
+**Example response (id = 2)**:
 
 ```json
   {
         "productId": 1,
         "name": "Product name 2",
         "typeOfProduct": {
-            "typeOfProductId": 1,
+            "typeOfProductId": 2,
             "name": "Beer"
         }
   }
 ```
 
 ### Create
-- **URL**: `/product?typeOfProductId=1`
+- **URL**: `/product?typeOfProductId=2`
 - **Method**: `POST`
 - **Description**: Creates a new product.
 - **Parameter**:
@@ -148,13 +148,13 @@ Docker-compose up
         "name": "Product name 3"
 }
 ```
-**Example response (typeOfProductId = 1)**:
+**Example response (typeOfProductId = 2)**:
 ```json
   {
         "productId": 3,
         "name": "Product name 3",
         "typeOfProduct": {
-            "typeOfProductId": 1,
+            "typeOfProductId": 2,
             "name": "Beer"
         }
   }
