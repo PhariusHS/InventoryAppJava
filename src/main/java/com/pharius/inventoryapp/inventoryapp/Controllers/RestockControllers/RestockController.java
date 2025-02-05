@@ -53,7 +53,6 @@ public class RestockController {
     @PostMapping
     public ResponseEntity<RestockDTO> createRestock(@RequestBody Restock restock, @RequestParam Long establishmentId) {
         return createRestockService.execute(restock, establishmentId);
-
     }
     @PutMapping("/{restockId}")
     public ResponseEntity<RestockDTO> updateRestock(@PathVariable Long restockId, @RequestBody Restock restockDetails) {
