@@ -18,6 +18,10 @@ https://github.com/PhariusHS/InventoryAppJava.git
 ```bash
 Docker-compose up
 ```
+3. Configure your environment variables files with the repository template:
+```bash
+.env.template
+```
 
 # AUTH ENDPOINTS: 
 - **URL**:
