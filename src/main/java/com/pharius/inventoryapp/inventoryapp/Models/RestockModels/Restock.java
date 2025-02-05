@@ -26,7 +26,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "restockId")
 public class Restock {
 
     @Id

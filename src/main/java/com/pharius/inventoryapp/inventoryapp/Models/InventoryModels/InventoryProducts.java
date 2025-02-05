@@ -38,7 +38,7 @@ public class InventoryProducts {
     @JsonIgnore // fix recursion 
     private Inventory inventory;
 
-    private int stock;
+    private Integer stock;
 
 
 }

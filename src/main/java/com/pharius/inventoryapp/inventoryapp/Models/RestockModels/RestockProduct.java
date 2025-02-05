@@ -39,6 +39,6 @@ public class RestockProduct {
     private Restock restock;
 
     @Positive(message = "Restocked product has to be at least 1")
-    private int quantity;
+    private Integer quantity;
 
 }

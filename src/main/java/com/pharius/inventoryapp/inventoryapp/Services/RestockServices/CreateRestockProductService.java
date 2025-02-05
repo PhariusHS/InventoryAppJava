@@ -36,23 +36,27 @@ public class CreateRestockProductService
     @Override
     public ResponseEntity<RestockProductDTO> execute(RestockProduct restockProduct, Long inventoryProductId, Long restockId) {
         Optional<Restock> foundedRestock = restockRepository.findById(restockId);
-        Optional<InventoryProducts> foundedinventoryProducts = inventoryProductsRepository.findById(inventoryProductId);
-
-        if (!foundedinventoryProducts.isPresent()) {
+        Optional<InventoryProducts> foundedInventoryProducts = inventoryProductsRepository.findById(inventoryProductId);
+       
+        if (!foundedInventoryProducts.isPresent()) {
             throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Inventory product");
         }
         if (!foundedRestock.isPresent()) {
             throw new EntityNotFoundException(ErrorMessages.ENTITY_NOT_FOUND, "Restock");
         }
 
-        if(foundedinventoryProducts.get().getStock() < restockProduct.getQuantity()){
+        Integer availableStock = foundedInventoryProducts.get().getStock();
+        Integer restockedQuantity = restockProduct.getQuantity();
+
+        if( availableStock < restockedQuantity){
             throw new QuantityNotAvailableException(ErrorMessages.QUANTITY_NOT_AVAILABLE, "Inventory product");
         }
 
 
-        restockProduct.setInventoryProduct(foundedinventoryProducts.get());
+        restockProduct.setInventoryProduct(foundedInventoryProducts.get());
         restockProduct.setRestock(foundedRestock.get());
         restockProductRepository.save(restockProduct);
+        foundedInventoryProducts.get().setStock(availableStock - restockedQuantity);
         return ResponseEntity.status(HttpStatus.CREATED).body(new RestockProductDTO(restockProduct));
     }
 

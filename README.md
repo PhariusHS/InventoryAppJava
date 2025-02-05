@@ -42,10 +42,10 @@ Docker-compose up
 
 #### RETURNS:
 
-```
+```json
 {
-"message":"User successfully created",
-"token":"authTokenExample"
+    "message": "User successfully created",
+    "token": "authTokenExample"
 }
 
 ```
@@ -64,7 +64,7 @@ Docker-compose up
 
 #### RETURNS:
 
-```
+```json
 {
     "message": "Successfully log in",
     "token": "authTokenExample"
@@ -110,6 +110,7 @@ Docker-compose up
         }
     },
     ...
+]
 ```
 
 ### Get by ID
@@ -142,7 +143,7 @@ Docker-compose up
     
 
 **Example body:**
-```body
+```json
 {   
         "name": "Product name 3"
 }
@@ -168,7 +169,7 @@ Docker-compose up
     
 
 **Example body:**
-```body
+```json
 {
     "name":"Chardonnay PDB",
     "typeOfProduct": {
@@ -187,3 +188,7 @@ Docker-compose up
     }
 }
 ```
+
+
+
+
