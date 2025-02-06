@@ -6,6 +6,18 @@ Every establishment has an inventory with a list of products and their available
 When an establishment needs to restock itself, it generates a restock request based on its inventory.
 Once the restock is completed, the inventory quantities will decrease.
 
+#Architecture
+This project follows a layered architecture to ensure a clean separation of responsibilities and easy maintenance.
+
+###Layers:
+- Controller: Handles incoming HTTP requests and responses, delegating business logic to the service layer.
+- Middleware: Manages authentication, authorization, and request processing before reaching the service layer.
+- Service: Implements business logic, processes data, and interacts with the repository layer.
+- Model: Defines the application's data structures and represents database entities.
+- Repository: Manages data persistence and retrieval, interacting directly with the database.
+###Global Layer:
+- Exception Handler: Centralized error handling to manage and return meaningful responses across the application.
+
 
 ## Installation
 
