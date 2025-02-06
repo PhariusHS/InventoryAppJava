@@ -6,7 +6,7 @@ Every establishment has an inventory with a list of products and their available
 When an establishment needs to restock itself, it generates a restock request based on its inventory.
 Once the restock is completed, the inventory quantities will decrease.
 
-#Architecture
+# Architecture
 This project follows a layered architecture to ensure a clean separation of responsibilities and easy maintenance.
 
 ### Layers:
